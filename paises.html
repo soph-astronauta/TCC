@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinos de Intercâmbio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#0B4DDB;
+    --blue-dark:#08389e;
+    --red:#E63946;
+    --light:#f5f8ff;
+    --dark:#1d2939;
+    --gray:#667085;
+    --white:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--light);
+}
+
+.hero{
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    padding:80px 20px;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    opacity:.9;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.filter-box{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    margin-top:-40px;
+    position:relative;
+    z-index:10;
+}
+
+.filter-box h3{
+    margin-bottom:15px;
+    color:var(--blue);
+}
+
+select{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:2px solid #dce4ff;
+    font-size:16px;
+    outline:none;
+}
+
+.grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card-img{
+    height:220px;
+    background-size:cover;
+    background-position:center;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.country{
+    display:inline-block;
+    background:#edf3ff;
+    color:var(--blue);
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:var(--dark);
+}
+
+.card p{
+    color:var(--gray);
+    margin-bottom:20px;
+}
+
+.info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    font-size:14px;
+}
+
+.btn{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    background:var(--red);
+    color:white;
+    padding:12px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#c92836;
+}
+
+.hidden{
+    display:none;
+}
+
+.results{
+    margin-top:20px;
+    color:var(--gray);
+    font-weight:500;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.2rem;
+}
+
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Escolha seu Destino de Intercâmbio 🌎</h1>
+    <p>
+        Encontre o país ideal para estudar idiomas, viver novas experiências
+        culturais e impulsionar sua carreira internacional.
+    </p>
+</section>
+
+<div class="container">
+
+    <div class="filter-box">
+        <h3>Filtrar por país</h3>
+
+        <select id="countryFilter">
+            <option value="all">Todos os países</option>
+            <option value="canada">Canadá</option>
+            <option value="usa">Estados Unidos</option>
+            <option value="ireland">Irlanda</option>
+            <option value="australia">Austrália</option>
+            <option value="england">Inglaterra</option>
+            <option value="malta">Malta</option>
+        </select>
+
+        <div class="results">
+            Destinos encontrados: <span id="count">6</span>
+        </div>
+    </div>
+
+    <div class="grid" id="cardsContainer">
+
+        <div class="card" data-country="canada">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1503614472-8c93d56cd3f6?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-content">
+                <span class="country">🇨🇦 Canadá</span>
+                <h3>Intercâmbio em Toronto</h3>
+                <p>Estude inglês em uma das cidades mais multiculturais do mundo.</p>
+                <div class="info">
+                    <span>📚 Inglês</span>
+                    <span>⏱ 4 a 52 semanas</span>
+                </div>
+                <a href="#" class="btn">Ver Programa</a>
+            </div>
+        </div>
+
+        <div class="card" data-country="usa">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-content">
+                <span class="country">🇺🇸 Estados Unidos</span>
+                <h3>Intercâmbio em Nova York</h3>
+                <p>Aprenda inglês na cidade mais famosa do planeta.</p>
+                <div class="info">
+                    <span>📚 Inglês</span>
+                    <span>⏱ 4 a 48 semanas</span>
+                </div>
+                <a href="#" class="btn">Ver Programa</a>
+            </div>
+        </div>
+
+        <div class="card" data-country="ireland">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-content">
+                <span class="country">🇮🇪 Irlanda</span>
+                <h3>Intercâmbio em Dublin</h3>
+                <p>Estude e tenha possibilidade de trabalhar durante o programa.</p>
+                <div class="info">
+                    <span>📚 Inglês</span>
+                    <span>⏱ 25 semanas+</span>
+                </div>
+                <a href="#" class="btn">Ver Programa</a>
+            </div>
+        </div>
+
+        <div class="card" data-country="australia">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-content">
+                <span class="country">🇦🇺 Austrália</span>
+                <h3>Intercâmbio em Sydney</h3>
+                <p>Combine estudo, trabalho e qualidade de vida.</p>
+                <div class="info">
+                    <span>📚 Inglês</span>
+                    <span>⏱ 12 a 52 semanas</span>
+                </div>
+                <a href="#" class="btn">Ver Programa</a>
+            </div>
+        </div>
+
+        <div class="card" data-country="england">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-content">
+                <span class="country">🇬🇧 Inglaterra</span>
+                <h3>Intercâmbio em Londres</h3>
+                <p>Aprenda inglês no berço do idioma e viva uma experiência única.</p>
+                <div class="info">
+                    <span>📚 Inglês</span>
+                    <span>⏱ 2 a 52 semanas</span>
+                </div>
+                <a href="#" class="btn">Ver Programa</a>
+            </div>
+        </div>
+
+        <div class="card" data-country="malta">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1541417904950-b855846fe074?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-content">
+                <span class="country">🇲🇹 Malta</span>
+                <h3>Intercâmbio em Malta</h3>
+                <p>Estude inglês em uma ilha paradisíaca do Mediterrâneo.</p>
+                <div class="info">
+                    <span>📚 Inglês</span>
+                    <span>⏱ 2 a 36 semanas</span>
+                </div>
+                <a href="#" class="btn">Ver Programa</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const filter = document.getElementById('countryFilter');
+const cards = document.querySelectorAll('.card');
+const count = document.getElementById('count');
+
+filter.addEventListener('change', () => {
+
+    const selected = filter.value;
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        if(selected === 'all' || card.dataset.country === selected){
+            card.classList.remove('hidden');
+            visible++;
+        } else {
+            card.classList.add('hidden');
+        }
+
+    });
+
+    count.textContent = visible;
+});
+</script>
+
+</body>
+</html>
