@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat de Intercâmbio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0f1a;
+    --card:#111827;
+    --user:#3b82f6;
+    --bot:#000000;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top, #060757, var(--bg));
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* CHAT BOX */
+
+.chat-container{
+    width:90%;
+    max-width:600px;
+    height:85vh;
+    background:var(--card);
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* HEADER */
+
+.chat-header{
+    padding:18px;
+    background:linear-gradient(90deg,var(--user),var(--bot));
+    color:white;
+    text-align:center;
+    font-weight:600;
+}
+
+/* MESSAGES */
+
+.chat-box{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* MESSAGE */
+
+.msg{
+    max-width:80%;
+    padding:12px 15px;
+    border-radius:15px;
+    font-size:14px;
+    line-height:1.4;
+    animation:fade .3s ease;
+}
+
+.user{
+    background:var(--user);
+    color:white;
+    align-self:flex-end;
+    border-bottom-right-radius:5px;
+}
+
+.bot{
+    background:#1f2937;
+    color:var(--text);
+    align-self:flex-start;
+    border-bottom-left-radius:5px;
+}
+
+/* INPUT */
+
+.input-box{
+    display:flex;
+    padding:15px;
+    background:#0f172a;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background:#1f2937;
+    color:white;
+}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    background:var(--user);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    filter:brightness(1.2);
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chat-container">
+
+<div class="chat-header">
+💬 Chat de Intercâmbio - Tire suas dúvidas
+</div>
+
+<div class="chat-box" id="chatBox">
+
+<div class="msg bot">
+Olá! 👋 Me pergunte sobre países, bolsas, cursos ou intercâmbio.
+</div>
+
+</div>
+
+<div class="input-box">
+<input type="text" id="input" placeholder="Digite sua pergunta...">
+<button onclick="sendMessage()">Enviar</button>
+</div>
+
+</div>
+
+<script>
+
+const chatBox = document.getElementById("chatBox");
+const input = document.getElementById("input");
+
+// adicionar mensagem
+function addMessage(text, type){
+    const div = document.createElement("div");
+    div.classList.add("msg", type);
+    div.innerText = text;
+    chatBox.appendChild(div);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// resposta simples (simulação de IA)
+function getResponse(msg){
+
+    msg = msg.toLowerCase();
+
+    if(msg.includes("canadá")){
+        return "🇨🇦 O Canadá é um dos melhores destinos para intercâmbio com possibilidade de trabalho durante os estudos.";
+    }
+
+    if(msg.includes("inglês")){
+        return "📚 Você pode aprender inglês em países como EUA, Inglaterra, Irlanda, Canadá e Austrália.";
+    }
+
+    if(msg.includes("bolsa")){
+        return "🎓 Existem bolsas em universidades como Harvard, Oxford e Toronto. Quer que eu te mostre opções?";
+    }
+
+    if(msg.includes("preço") || msg.includes("custo")){
+        return "💰 O custo varia de país para país, mas intercâmbios podem começar a partir de valores acessíveis com bolsas.";
+    }
+
+    return "🤔 Ainda não sei isso exatamente, mas posso te ajudar com países, bolsas e cursos de intercâmbio!";
+}
+
+// enviar mensagem
+function sendMessage(){
+
+    const text = input.value.trim();
+
+    if(text === "") return;
+
+    addMessage(text, "user");
+
+    input.value = "";
+
+    setTimeout(() => {
+        const response = getResponse(text);
+        addMessage(response, "bot");
+    }, 600);
+
+}
+
+// Enter para enviar
+input.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portal de Intercâmbio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0f1a;
+    --card:#111827;
+    --blue:#3b82f6;
+    --red:#ef4444;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top, #121a2e, var(--bg));
+    color:var(--text);
+    opacity:1;
+    transition: opacity .4s ease;
+}
+
+/* FADE OUT */
+body.fade-out{
+    opacity:0;
+}
+
+/* TOP BAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    position:sticky;
+    top:0;
+    background:rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    z-index:1000;
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    font-size:18px;
+}
+
+.logo-box{
+    width:35px;
+    height:35px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--blue),var(--red));
+}
+
+/* HOME BUTTON */
+
+.home-btn{
+    background:rgba(255,255,255,0.06);
+    color:var(--text);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:10px 16px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+}
+
+.home-btn:hover{
+    background:rgba(59,130,246,0.2);
+    border-color:rgba(59,130,246,0.4);
+    transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:70px 20px 30px;
+}
+
+.hero h1{
+    font-size:2.8rem;
+    background:linear-gradient(90deg,var(--blue),var(--red));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* GRID */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+
+.card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:25px;
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(59,130,246,0.4);
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.05),transparent);
+    transition:.6s;
+}
+
+.card:hover::before{
+    left:100%;
+}
+
+.icon{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+h3{
+    margin-bottom:10px;
+}
+
+p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--muted);
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+
+    <!-- LOGO -->
+    <div class="logo">
+         <img src="img/logotipo.png" alt="logo">
+        <span>INTERWAY</span>
+    </div>
+
+    <!-- HOME BUTTON -->
+    <button class="home-btn" onclick="goHome()">🏠 Home</button>
+
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>🌍 Portal de Intercâmbio</h1>
+    <p>Escolha um destino e comece sua jornada internacional</p>
+</div>
+
+<!-- CARDS -->
+<div class="container">
+
+<div class="grid">
+
+<div class="card" onclick="goTo('paises.html')">
+    <div class="icon">✈️</div>
+    <h3>Países</h3>
+    <p>Descubra destinos de intercâmbio pelo mundo.</p>
+</div>
+
+<div class="card" onclick="goTo('bolsas.html')">
+    <div class="icon">🎓</div>
+    <h3>Bolsas de Estudo</h3>
+    <p>Universidades com programas de bolsas internacionais.</p>
+</div>
+
+<div class="card" onclick="goTo('chat.html')">
+    <div class="icon">💬</div>
+    <h3>Chat</h3>
+    <p>Converse com intercambistas e tire dúvidas.</p>
+</div>
+
+<div class="card" onclick="goTo('blog.html')">
+    <div class="icon">🌎</div>
+    <h3>Experiências</h3>
+    <p>Leia histórias reais de quem já fez intercâmbio.</p>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Intercâmbio+ • Conectando você ao mundo
+</footer>
+
+<script>
+
+// IR PARA OUTRAS PÁGINAS COM TRANSIÇÃO
+function goTo(page){
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+        window.location.href = page;
+    }, 400);
+}
+
+// VOLTAR PARA HOME
+function goHome(){
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 400);
+}
+
+</script>
+
+</body>
+</html>
