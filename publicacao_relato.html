@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Publicar Experiência - Interway</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --blue:#0B4DDB;
+    --blue-dark:#0738A5;
+    --red:#E63946;
+    --light:#F5F8FF;
+    --dark:#101828;
+    --gray:#667085;
+    --white:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--light);
+}
+
+/* TOPBAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.nav-btn{
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:600;
+    font-size:14px;
+}
+
+.back{
+    background:#e5e7eb;
+    color:#111;
+}
+
+.home{
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:white;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:60px 20px 20px;
+}
+
+.hero h1{
+    font-size:2.5rem;
+    color:var(--dark);
+}
+
+.hero p{
+    color:var(--gray);
+}
+
+/* FORM */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.form-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:600;
+    color:var(--dark);
+}
+
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+textarea{
+    height:150px;
+    resize:none;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--blue),var(--red));
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+/* PREVIEW */
+.preview{
+    margin-top:30px;
+    padding:20px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    display:none;
+}
+
+.preview img{
+    width:100%;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+.preview h3{
+    margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+    <div class="logo">
+        <img src="img/logotipo.png" alt="logo">
+        <span>INTERWAY</span>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="javascript:history.back()" class="nav-btn back">⬅ Voltar</a>
+        <a href="index.html" class="nav-btn home">🏠 Home</a>
+    </div>
+
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>📖 Compartilhe sua Experiência</h1>
+    <p>Conte como foi seu intercâmbio e inspire outras pessoas</p>
+</div>
+
+<!-- FORM -->
+<div class="container">
+
+<div class="form-box">
+
+    <label>Seu nome</label>
+    <input type="text" id="nome" placeholder="Ex: João Silva">
+
+    <label>País do intercâmbio</label>
+    <select id="pais">
+        <option>Canadá</option>
+        <option>EUA</option>
+        <option>Irlanda</option>
+        <option>Austrália</option>
+        <option>Inglaterra</option>
+        <option>Malta</option>
+    </select>
+
+    <label>Sua experiência</label>
+    <textarea id="texto" placeholder="Conte sua experiência..."></textarea>
+
+    <label>Foto (URL opcional)</label>
+    <input type="text" id="foto" placeholder="Cole um link de imagem">
+
+    <button onclick="publicar()">Publicar Experiência</button>
+
+</div>
+
+<!-- PREVIEW -->
+<div class="preview" id="preview">
+
+    <h2>✨ Sua publicação</h2>
+
+    <h3 id="pNome"></h3>
+    <p id="pPais"></p>
+    <p id="pTexto"></p>
+    <img id="pFoto">
+
+</div>
+
+</div>
+
+<script>
+
+function publicar(){
+
+    const nome = document.getElementById("nome").value;
+    const pais = document.getElementById("pais").value;
+    const texto = document.getElementById("texto").value;
+    const foto = document.getElementById("foto").value;
+
+    document.getElementById("pNome").innerText = "👤 " + nome;
+    document.getElementById("pPais").innerText = "🌎 " + pais;
+    document.getElementById("pTexto").innerText = texto;
+
+    if(foto){
+        document.getElementById("pFoto").src = foto;
+        document.getElementById("pFoto").style.display = "block";
+    } else {
+        document.getElementById("pFoto").style.display = "none";
+    }
+
+    document.getElementById("preview").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>

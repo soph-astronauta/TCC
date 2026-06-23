@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadastro - Comunidade Intercâmbio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --blue:#0B4DDB;
+    --blue-dark:#0738A5;
+    --red:#E63946;
+    --light:#F5F8FF;
+    --dark:#101828;
+    --gray:#667085;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eaf1ff,#f7f9ff);
+}
+
+/* TOPBAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.nav-btn{
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+.back{
+    background:#e5e7eb;
+    color:#111;
+}
+
+.home{
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:white;
+}
+
+/* CONTAINER */
+.container{
+    max-width:500px;
+    margin:60px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.1);
+}
+
+/* TITLE */
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:var(--dark);
+}
+
+/* INPUTS */
+input, select{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    outline:none;
+    font-size:14px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+/* SUCCESS */
+.success{
+    display:none;
+    text-align:center;
+    margin-top:15px;
+    color:green;
+    font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+<div class="logo">
+    <img src="img/logotipo.png">
+    <span>INTERWAY</span>
+</div>
+
+<div class="nav-buttons">
+    <a href="javascript:history.back()" class="nav-btn back">⬅ Voltar</a>
+    <a href="index.html" class="nav-btn home">🏠 Home</a>
+</div>
+
+</div>
+
+<!-- FORM -->
+<div class="container">
+
+<h1>Preencha as informações abaixo</h1>
+
+<input id="nome" type="text" placeholder="Seu nome">
+<input id="email" type="email" placeholder="Seu e-mail">
+
+<select id="pais">
+    <option value="">Selecione seu país</option>
+    <option>Brasil</option>
+    <option>Canadá</option>
+    <option>Estados Unidos</option>
+    <option>Irlanda</option>
+    <option>Austrália</option>
+    <option>Inglaterra</option>
+</select>
+
+<input id="senha" type="password" placeholder="Crie uma senha">
+
+<button onclick="cadastro()">Entrar na comunidade</button>
+
+<div class="success" id="msg">
+🎉 Cadastro realizado com sucesso!
+</div>
+
+</div>
+
+<script>
+
+function cadastro(){
+
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const pais = document.getElementById("pais").value;
+    const senha = document.getElementById("senha").value;
+
+    if(!nome || !email || !pais || !senha){
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    // salvar localmente (simulação)
+    const user = {nome, email, pais};
+    localStorage.setItem("user", JSON.stringify(user));
+
+    document.getElementById("msg").style.display = "block";
+
+    setTimeout(()=>{
+        window.location.href = "comunidade.html";
+    }, 1500);
+}
+
+</script>
+
+</body>
+</html>

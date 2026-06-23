@@ -6,7 +6,7 @@
 
 <title>Comunidade de Intercambistas</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,7 +17,6 @@
     --light:#F5F8FF;
     --gray:#667085;
     --dark:#101828;
-    --white:#FFF;
 }
 
 *{
@@ -31,67 +30,84 @@ body{
     background:var(--light);
 }
 
-/* HERO */
+/* TOPBAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
 
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.nav-btn{
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+.back{
+    background:#e5e7eb;
+    color:#111;
+}
+
+.home{
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:white;
+}
+
+/* BOTÃO PUBLICAR */
+.publish-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:linear-gradient(135deg,var(--blue),var(--red));
+    color:white;
+    border:none;
+    padding:15px 18px;
+    border-radius:50px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    z-index:2000;
+}
+
+/* HERO */
 .hero{
     background:linear-gradient(135deg,var(--blue),var(--blue-dark));
     color:white;
-    padding:80px 20px;
+    padding:70px 20px;
     text-align:center;
 }
 
-.hero h1{
-    font-size:3rem;
-    margin-bottom:15px;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-    opacity:.9;
-}
-
-/* SEARCH */
-
-.search-box{
-    max-width:1000px;
-    margin:auto;
-    margin-top:-35px;
-    position:relative;
-    z-index:2;
-}
-
-.search{
-    background:white;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.search input{
-    width:100%;
-    padding:16px;
-    border:none;
-    outline:none;
-    font-size:16px;
-}
-
-/* BLOG */
-
+/* LAYOUT */
 .container{
     max-width:1200px;
     margin:auto;
-    padding:50px 20px;
+    padding:40px 20px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:30px;
-}
-
-/* POSTS */
-
+/* POST */
 .post{
     background:white;
     border-radius:20px;
@@ -111,54 +127,24 @@ body{
 }
 
 .tag{
-    display:inline-block;
     background:#edf3ff;
     color:var(--blue);
-    padding:6px 14px;
-    border-radius:30px;
+    padding:6px 12px;
+    border-radius:20px;
     font-size:13px;
-    font-weight:600;
-    margin-bottom:15px;
-}
-
-.content h2{
-    margin-bottom:10px;
-}
-
-.content p{
-    color:var(--gray);
-    margin-bottom:20px;
-}
-
-.author{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:20px;
-}
-
-.avatar{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:var(--blue);
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
+    display:inline-block;
 }
 
 .actions{
     display:flex;
     gap:10px;
-    flex-wrap:wrap;
+    margin-top:15px;
 }
 
 .btn{
     border:none;
     cursor:pointer;
-    padding:10px 16px;
+    padding:10px 14px;
     border-radius:10px;
     font-weight:600;
 }
@@ -168,266 +154,210 @@ body{
     color:var(--red);
 }
 
-.comment{
-    background:#edf3ff;
-    color:var(--blue);
+/* REAÇÕES */
+.reaction-box{
+    display:none;
+    gap:8px;
+    margin-top:10px;
 }
 
-.contact{
-    background:var(--blue);
-    color:white;
+.reaction{
+    font-size:18px;
+    cursor:pointer;
+    background:#f1f5f9;
+    padding:6px 10px;
+    border-radius:8px;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:3000;
+}
+
+.modal-content{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    width:90%;
+    max-width:500px;
+}
+
+input, textarea, select{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:10px;
+    border:1px solid #ddd;
 }
 
 /* SIDEBAR */
-
-.sidebar-card{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
-.sidebar-card h3{
-    color:var(--blue);
-    margin-bottom:15px;
-}
-
-.country{
-    display:block;
-    text-decoration:none;
-    color:var(--dark);
-    padding:12px;
-    border-radius:10px;
-    transition:.3s;
-}
-
-.country:hover{
-    background:#edf3ff;
-}
-
-.member{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:15px;
-}
-
-.member-avatar{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:var(--red);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:bold;
-}
-
-/* CTA */
-
-.cta{
-    background:linear-gradient(135deg,var(--red),#ff5d69);
-    color:white;
-    text-align:center;
-    padding:70px 30px;
-    margin-top:50px;
-}
-
-.cta h2{
-    font-size:2.5rem;
-    margin-bottom:15px;
-}
-
-.cta button{
-    margin-top:20px;
-    border:none;
-    padding:15px 35px;
-    border-radius:50px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.grid{
-    grid-template-columns:1fr;
-}
-
-.hero h1{
-    font-size:2.2rem;
-}
-
+aside{
+    margin-top:30px;
 }
 
 </style>
 </head>
+
 <body>
 
-<section class="hero">
+<!-- TOPBAR -->
+<div class="topbar">
 
+<div class="logo">
+    <img src="img/logotipo.png">
+    <span>INTERWAY</span>
+</div>
+
+<div class="nav-buttons">
+    <a href="javascript:history.back()" class="nav-btn back">⬅ Voltar</a>
+    <a href="index.html" class="nav-btn home">🏠 Home</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+<div class="hero">
 <h1>🌎 Comunidade de Intercambistas</h1>
-
-<p>
-Leia experiências reais, tire dúvidas, faça networking e converse
-com pessoas que já viveram o intercâmbio dos seus sonhos.
-</p>
-
-</section>
-
-<div class="search-box">
-
-<div class="search">
-<input type="text" placeholder="Pesquisar relatos, países ou cidades...">
+<p>Compartilhe, curta e viva experiências reais</p>
 </div>
 
-</div>
+<!-- FEED -->
+<div class="container" id="feed">
 
-<div class="container">
+<!-- POST EXEMPLO -->
+<div class="post" data-likes="124">
 
-<div class="grid">
-
-<div>
-
-<div class="post">
-
-<img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200" alt="">
+<img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad">
 
 <div class="content">
 
 <span class="tag">🇬🇧 Inglaterra</span>
-
-<h2>Minha experiência de 8 meses em Londres</h2>
-
-<p>
-Compartilho os desafios, custos, adaptação cultural e dicas para quem deseja estudar inglês na Inglaterra.
-</p>
-
-<div class="author">
-
-<div class="avatar">A</div>
-
-<div>
-<strong>Amanda Silva</strong><br>
-<small>Ex-intercambista • Londres</small>
-</div>
-
-</div>
+<h2>Minha experiência em Londres</h2>
+<p>8 meses estudando inglês.</p>
 
 <div class="actions">
-<button class="btn like">❤️ 124 Curtidas</button>
-<button class="btn comment">💬 38 Comentários</button>
-<button class="btn contact">📩 Conversar</button>
+<button class="btn like" onclick="likePost(this)">
+❤️ Curtir (<span class="counter">124</span>)
+</button>
+
+<button class="btn" onclick="toggleReactions(this)">😄 Reagir</button>
+</div>
+
+<div class="reaction-box">
+<span class="reaction" onclick="react(this)">😍</span>
+<span class="reaction" onclick="react(this)">🔥</span>
+<span class="reaction" onclick="react(this)">👏</span>
+</div>
+
+</div>
 </div>
 
 </div>
 
-</div>
+<!-- BOTÃO PUBLICAR -->
+<button class="publish-btn" onclick="openModal()">+ Publicar Relato</button>
 
-<div class="post">
+<!-- MODAL -->
+<div class="modal" id="modal">
 
-<img src="https://images.unsplash.com/photo-1503614472-8c93d56cd3f6?w=1200" alt="">
+<div class="modal-content">
 
-<div class="content">
+<h2>Publicar Relato</h2>
 
-<span class="tag">🇨🇦 Canadá</span>
+<input type="text" id="titulo" placeholder="Título">
+<select id="pais">
+<option>Canadá</option>
+<option>EUA</option>
+<option>Inglaterra</option>
+<option>Austrália</option>
+<option>Irlanda</option>
+</select>
 
-<h2>Como consegui trabalho em Toronto</h2>
+<textarea id="texto" placeholder="Sua experiência"></textarea>
+<input type="text" id="img" placeholder="URL da imagem">
 
-<p>
-Tudo sobre documentação, currículo canadense e minha rotina durante o intercâmbio.
-</p>
-
-<div class="author">
-
-<div class="avatar">L</div>
-
-<div>
-<strong>Lucas Pereira</strong><br>
-<small>Ex-intercambista • Toronto</small>
-</div>
-
-</div>
-
-<div class="actions">
-<button class="btn like">❤️ 198 Curtidas</button>
-<button class="btn comment">💬 64 Comentários</button>
-<button class="btn contact">📩 Conversar</button>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<aside>
-
-<div class="sidebar-card">
-
-<h3>🌎 Países Populares</h3>
-
-<a href="#" class="country">🇨🇦 Canadá</a>
-<a href="#" class="country">🇮🇪 Irlanda</a>
-<a href="#" class="country">🇦🇺 Austrália</a>
-<a href="#" class="country">🇬🇧 Inglaterra</a>
-<a href="#" class="country">🇺🇸 Estados Unidos</a>
-
-</div>
-
-<div class="sidebar-card">
-
-<h3>⭐ Membros em Destaque</h3>
-
-<div class="member">
-<div class="member-avatar">M</div>
-<div>Marina Costa</div>
-</div>
-
-<div class="member">
-<div class="member-avatar">J</div>
-<div>João Santos</div>
-</div>
-
-<div class="member">
-<div class="member-avatar">R</div>
-<div>Rafael Lima</div>
-</div>
-
-</div>
-
-<div class="sidebar-card">
-
-<h3>📊 Comunidade</h3>
-
-<p>👥 +4.800 membros</p>
-<p>📝 +1.200 relatos publicados</p>
-<p>💬 +18.000 comentários</p>
-
-</div>
-
-</aside>
+<button onclick="addPost()">Publicar</button>
+<button onclick="closeModal()" style="margin-top:10px;background:#ddd;">Fechar</button>
 
 </div>
 
 </div>
 
-<section class="cta">
+<script>
 
-<h2>Compartilhe sua experiência</h2>
+function likePost(btn){
+    let counter = btn.querySelector(".counter");
+    counter.innerText = parseInt(counter.innerText) + 1;
+}
 
-<p>
-Já fez intercâmbio? Ajude futuros estudantes compartilhando suas histórias,
-dicas e aprendizados.
-</p>
+function toggleReactions(btn){
+    let box = btn.parentElement.nextElementSibling;
+    box.style.display = box.style.display === "flex" ? "none" : "flex";
+}
 
-<button>Publicar Relato</button>
+function react(el){
+    el.style.transform = "scale(1.4)";
+    setTimeout(()=> el.style.transform="scale(1)",200);
+}
 
-</section>
+/* MODAL */
+function openModal(){
+    document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+
+/* NOVO POST */
+function addPost(){
+
+    const titulo = document.getElementById("titulo").value;
+    const pais = document.getElementById("pais").value;
+    const texto = document.getElementById("texto").value;
+    const img = document.getElementById("img").value;
+
+    const post = document.createElement("div");
+    post.className = "post";
+
+    post.innerHTML = `
+        <img src="${img}">
+        <div class="content">
+        <span class="tag">🌎 ${pais}</span>
+        <h2>${titulo}</h2>
+        <p>${texto}</p>
+
+        <div class="actions">
+        <button class="btn like" onclick="likePost(this)">
+        ❤️ Curtir (<span class="counter">0</span>)
+        </button>
+        <button class="btn" onclick="toggleReactions(this)">😄 Reagir</button>
+        </div>
+
+        <div class="reaction-box">
+        <span class="reaction" onclick="react(this)">😍</span>
+        <span class="reaction" onclick="react(this)">🔥</span>
+        <span class="reaction" onclick="react(this)">👏</span>
+        </div>
+
+        </div>
+    `;
+
+    document.getElementById("feed").prepend(post);
+
+    closeModal();
+}
+
+</script>
 
 </body>
 </html>

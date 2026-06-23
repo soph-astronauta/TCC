@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat Intercambistas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0f1a;
+    --card:#111827;
+    --blue:#3b82f6;
+    --green:#22c55e;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top, #121a2e, var(--bg));
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* TOPBAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:rgba(17,24,39,0.8);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-weight:700;
+}
+
+.logo img{
+    width:40px;
+    height:40px;
+}
+
+/* BUTTONS */
+.nav{
+    display:flex;
+    gap:10px;
+}
+
+.btn-nav{
+    padding:10px 14px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+}
+
+.back{
+    background:#374151;
+    color:white;
+}
+
+.home{
+    background:linear-gradient(135deg,var(--blue),#1d4ed8);
+    color:white;
+}
+
+/* CHAT */
+.chat{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* MSG */
+.msg{
+    max-width:75%;
+    padding:12px 14px;
+    border-radius:14px;
+    font-size:14px;
+    animation:fade .2s ease;
+}
+
+.user{
+    background:var(--blue);
+    color:white;
+    align-self:flex-end;
+    border-bottom-right-radius:4px;
+}
+
+.other{
+    background:var(--card);
+    color:var(--text);
+    align-self:flex-start;
+    border-bottom-left-radius:4px;
+}
+
+.name{
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:3px;
+}
+
+/* INPUT */
+.input-area{
+    display:flex;
+    padding:12px;
+    background:rgba(17,24,39,0.9);
+    border-top:1px solid rgba(255,255,255,0.08);
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:#1f2937;
+    color:white;
+}
+
+button{
+    padding:12px 16px;
+    border:none;
+    border-radius:10px;
+    background:var(--green);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+<div class="logo">
+    <img src="img/logotipo.png">
+    <span>Intercambistas</span>
+</div>
+
+<div class="nav">
+    <a href="javascript:history.back()" class="btn-nav back">⬅ Voltar</a>
+    <a href="index.html" class="btn-nav home">🏠 Home</a>
+</div>
+
+</div>
+
+<!-- CHAT -->
+<div class="chat" id="chat">
+
+<div class="msg other">
+    <div class="name">Lucas 🇨🇦</div>
+    Oi pessoal! Alguém aqui fez intercâmbio no Canadá?
+</div>
+
+<div class="msg other">
+    <div class="name">Amanda 🇬🇧</div>
+    Sim! Fiz em Londres, foi incrível!
+</div>
+
+</div>
+
+<!-- INPUT -->
+<div class="input-area">
+<input id="input" placeholder="Digite sua mensagem...">
+<button onclick="send()">Enviar</button>
+</div>
+
+<script>
+
+const chat = document.getElementById("chat");
+const input = document.getElementById("input");
+
+const users = [
+    "Lucas 🇨🇦",
+    "Amanda 🇬🇧",
+    "Sophia 🇺🇸",
+    "Rafael 🇦🇺",
+    "Julia 🇮🇪"
+];
+
+// enviar mensagem
+function send(){
+
+    const text = input.value.trim();
+    if(text === "") return;
+
+    // mensagem do usuário
+    addMsg("Você", text, "user");
+
+    input.value = "";
+
+    // resposta simulada de outro intercambista
+    setTimeout(() => {
+        const user = users[Math.floor(Math.random()*users.length)];
+        const responses = [
+            "Que legal isso! 😍",
+            "Estou pensando em ir também!",
+            "Quanto você gastou aproximadamente?",
+            "Essa experiência muda a vida mesmo 🌍",
+            "Quero muito fazer isso um dia!"
+        ];
+
+        const msg = responses[Math.floor(Math.random()*responses.length)];
+        addMsg(user, msg, "other");
+
+    }, 800);
+}
+
+// adicionar mensagem
+function addMsg(name, text, type){
+
+    const div = document.createElement("div");
+    div.classList.add("msg", type);
+
+    if(type === "other"){
+        div.innerHTML = `<div class="name">${name}</div>${text}`;
+    } else {
+        div.innerHTML = text;
+    }
+
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+// enter
+input.addEventListener("keypress", (e)=>{
+    if(e.key === "Enter") send();
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Intercâmbio em Londres | Interway</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0f1a;
+    --card:#111827;
+    --blue:#1d4ed8;   /* azul bandeira UK */
+    --red:#dc2626;    /* vermelho bandeira UK */
+    --white:#ffffff;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:radial-gradient(circle at top,#0f172a,var(--bg));
+    color:var(--text);
+    line-height:1.7;
+}
+
+/* TOPBAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    position:sticky;
+    top:0;
+    background:rgba(15,23,42,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+}
+
+.logo img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+/* HOME */
+.home-btn{
+    text-decoration:none;
+    color:var(--white);
+    background:linear-gradient(135deg,var(--blue),var(--red));
+    padding:10px 18px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.home-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(29,78,216,.3);
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:90px 20px;
+}
+
+.hero h1{
+    font-size:clamp(2rem,5vw,4rem);
+    margin-bottom:15px;
+    background:linear-gradient(90deg,var(--blue),var(--white),var(--red));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:750px;
+    margin:auto;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px 60px;
+}
+
+/* CARD */
+.card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:25px;
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:var(--white);
+}
+
+.card p{
+    color:#d1d5db;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.info-box{
+    background:#1f2937;
+    padding:25px;
+    border-radius:16px;
+    text-align:center;
+    transition:.3s;
+}
+
+.info-box:hover{
+    transform:translateY(-5px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.info-box h3{
+    margin-bottom:10px;
+    color:#60a5fa;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.cta a{
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(135deg,var(--blue),var(--red));
+    font-weight:700;
+    transition:.3s;
+}
+
+.cta a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(220,38,38,.25);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:var(--muted);
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <div class="logo">
+        <img src="img/logotipo.png" alt="Interway">
+        <span>INTERWAY</span>
+    </div>
+
+    <a href="paises.html" class="home-btn">Voltar</a>
+</div>
+
+<section class="hero">
+    <h1>🇬🇧 Intercâmbio em Londres</h1>
+    <p>
+        Estude inglês na capital da Inglaterra e viva uma experiência internacional
+        em uma das cidades mais influentes do mundo.
+    </p>
+</section>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Por que escolher Londres?</h2>
+        <p>
+            Londres é um dos destinos mais desejados por estudantes do mundo inteiro.
+            A cidade combina história, modernidade, cultura e educação de excelência.
+            Além de aprender inglês em ambiente nativo, você estará cercado por museus,
+            parques, teatros e uma vida urbana vibrante.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Destaques do Programa</h2>
+
+        <div class="grid">
+
+            <div class="info-box">
+                <h3>🎓 Ensino de Excelência</h3>
+                <p>Escolas reconhecidas internacionalmente.</p>
+            </div>
+
+            <div class="info-box">
+                <h3🏙️ Vida Urbana</h3>
+                <p>Uma das cidades mais modernas e completas do mundo.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>🌍 Multiculturalidade</h3>
+                <p>Convivência com pessoas de todas as nacionalidades.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>🎭 Cultura e História</h3>
+                <p>Museus, teatros e monumentos icônicos.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>O que está incluído?</h2>
+
+        <p>
+            ✔ Curso de inglês em escola parceira<br>
+            ✔ Material didático<br>
+            ✔ Certificado internacional<br>
+            ✔ Suporte antes e durante a viagem<br>
+            ✔ Orientação de acomodação<br>
+            ✔ Apoio completo para adaptação em Londres
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Experiência em Londres</h2>
+
+        <p>
+            Durante seu intercâmbio você poderá visitar o Big Ben, London Eye,
+            Tower Bridge, Buckingham Palace e explorar bairros históricos e modernos,
+            enquanto pratica inglês todos os dias em situações reais.
+        </p>
+    </div>
+
+</div>
+
+<section class="cta">
+    <a href="paises.html">← Voltar para a Página Inicial</a>
+</section>
+
+<footer>
+    © 2026 Interway • Viva o mundo através do intercâmbio
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Central de Chat - Interway</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --blue:#0B4DDB;
+    --blue-dark:#0738A5;
+    --red:#E63946;
+    --light:#F5F8FF;
+    --dark:#101828;
+    --gray:#667085;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--light);
+}
+
+/* TOPBAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.nav-btn{
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.back{
+    background:#e5e7eb;
+    color:#111;
+}
+
+.home{
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:white;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero h1{
+    font-size:2.8rem;
+    margin-bottom:10px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:50px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.icon{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.card h2{
+    margin-bottom:10px;
+    color:var(--dark);
+}
+
+.card p{
+    color:var(--gray);
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 18px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    color:white;
+    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+<div class="logo">
+    <img src="img/logotipo.png" alt="logo">
+    <span>INTERWAY</span>
+</div>
+
+<div class="nav-buttons">
+    <a href="javascript:history.back()" class="nav-btn back">⬅ Voltar</a>
+    <a href="index.html" class="nav-btn home">🏠 Home</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+<div class="hero">
+<h1>💬 Central de Chat</h1>
+<p>Escolha como você quer conversar</p>
+</div>
+
+<!-- OPTIONS -->
+<div class="container">
+
+<!-- CHAT DÚVIDAS -->
+<div class="card" onclick="window.location.href='chat_duvidas.html'">
+    <div class="icon">🤖</div>
+    <h2>Chat de Dúvidas</h2>
+    <p>Tire dúvidas sobre países, cursos, preços e intercâmbio com nosso assistente.</p>
+    <a class="btn" href="chat_duvidas.html">Acessar Chat</a>
+</div>
+
+<!-- CHAT INTERCAMBISTAS -->
+<div class="card" onclick="window.location.href='chat_intercambistas.html'">
+    <div class="icon">🌎</div>
+    <h2>Conversar com Intercambistas</h2>
+    <p>Fale com pessoas que já fizeram intercâmbio e troque experiências reais.</p>
+    <a class="btn" href="cadastro.html">Entrar na Comunidade</a>
+</div>
+
+</div>
+
+</body>
+</html>
