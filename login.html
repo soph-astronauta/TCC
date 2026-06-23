@@ -142,6 +142,18 @@ button{
     opacity:0.9;
 }
 
+/* CADASTRO BUTTON */
+.cadastro-btn{
+    margin-top:10px;
+    background:linear-gradient(135deg,#10b981,#059669);
+    color:white;
+}
+
+.cadastro-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.1);
+}
+
 /* SMALL TEXT */
 .small{
     font-size:12px;
@@ -184,10 +196,12 @@ button{
 
 <button class="login-btn" onclick="login()">Entrar</button>
 
+<button class="cadastro-btn" onclick="cadastro()">Cadastre-se</button>
+
 <button class="area-btn" onclick="area()">Acessar área específica</button>
 
 <div class="small">
-Ainda não tem conta? Cadastre-se na comunidade.
+Ainda não tem conta? Crie uma agora e participe da comunidade.
 </div>
 
 </div>
@@ -207,12 +221,16 @@ function login(){
         return;
     }
 
-    // simulação de login
     localStorage.setItem("logged", "true");
 
     alert("Login realizado com sucesso!");
 
     window.location.href = "index.html";
+}
+
+// IR PARA CADASTRO
+function cadastro(){
+    window.location.href = "cadastro.html";
 }
 
 // ÁREA ESPECÍFICA
