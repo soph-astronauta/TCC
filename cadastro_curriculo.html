@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envio de Currículo - Interway</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background: #f5f7fb;
+        color: #333;
+    }
+
+    /* BOTÃO VOLTAR FIXO NO TOPO */
+    .back-home {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 999;
+    }
+
+    .back-home a {
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 50px;
+        border: 1px solid rgba(255,255,255,0.4);
+        background: rgba(123,44,191,0.85);
+        backdrop-filter: blur(6px);
+        transition: 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .back-home a:hover {
+        transform: translateX(-4px);
+        background: rgba(123,44,191,1);
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #3b0a57, #7b2cbf);
+        color: white;
+        padding: 80px 8% 40px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        opacity: 0.95;
+    }
+
+    /* FORM */
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 50px 20px;
+    }
+
+    .form-box {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        outline: none;
+    }
+
+    textarea {
+        resize: none;
+        height: 120px;
+    }
+
+    .btn {
+        margin-top: 20px;
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 50px;
+        background: #7b2cbf;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #5a189a;
+    }
+
+    /* MENSAGEM */
+    .message {
+        display: none;
+        text-align: center;
+        padding: 25px;
+        margin-top: 20px;
+        border-radius: 15px;
+        background: #e9f9ee;
+        color: #1b7f3a;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .message span {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        background: #2d0a44;
+        color: white;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- BOTÃO VOLTAR FIXO -->
+<div class="back-home">
+    <a href="trabalho.html"> Voltar</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Envie seu Currículo</h1>
+    <p>Conecte-se com oportunidades de trabalho na Interway</p>
+</div>
+
+<!-- FORMULÁRIO -->
+<div class="container">
+
+    <div class="form-box">
+
+        <form id="cvForm">
+
+            <label>Nome completo</label>
+            <input type="text" required>
+
+            <label>E-mail</label>
+            <input type="email" required>
+
+            <label>Telefone</label>
+            <input type="text" required>
+
+            <label>Mensagem / Objetivo profissional</label>
+            <textarea required></textarea>
+
+            <label>Upload do currículo (PDF)</label>
+            <input type="file" accept=".pdf" required>
+
+            <button class="btn" type="submit">Enviar Currículo</button>
+
+        </form>
+
+        <!-- MENSAGEM -->
+        <div class="message" id="successMessage">
+            <span>🎉 Parabéns!</span>
+            Seu currículo foi enviado com sucesso.<br>
+            Em breve entraremos em contato com você.
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Interway • Envio de Currículo
+</footer>
+
+<script>
+    const form = document.getElementById("cvForm");
+    const message = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        form.style.display = "none";
+        message.style.display = "block";
+    });
+</script>
+
+</body>
+</html>
