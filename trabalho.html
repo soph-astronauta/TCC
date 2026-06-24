@@ -19,6 +19,34 @@
         line-height: 1.7;
     }
 
+    /* BOTÃO VOLTAR (CORRIGIDO) */
+    .back-home {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+    }
+
+    .back-home a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 18px;
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 50px;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(6px);
+        transition: all .3s ease;
+        font-size: 0.95rem;
+    }
+
+    .back-home a:hover {
+        background: rgba(0, 0, 0, 0.55);
+        transform: translateX(-4px);
+    }
+
     /* HERO */
     .hero {
         background: linear-gradient(135deg, #0b3d2e, #1f8a70);
@@ -53,32 +81,6 @@
         margin-bottom: 30px;
     }
 
-    /* BOTÃO HOME */
-    .back-home {
-        margin-bottom: 25px;
-    }
-
-    .back-home a {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 18px;
-        border: 1px solid rgba(255,255,255,0.4);
-        border-radius: 50px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(5px);
-        transition: all .3s ease;
-        font-size: 0.95rem;
-    }
-
-    .back-home a:hover {
-        background: rgba(255,255,255,0.2);
-        transform: translateX(-4px);
-    }
-
-    /* BOTÃO PRINCIPAL */
     .btn {
         display: inline-block;
         background: #fff;
@@ -146,7 +148,6 @@
         margin-bottom: 15px;
     }
 
-    /* IDADES */
     .ages {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -167,7 +168,6 @@
         margin-bottom: 10px;
     }
 
-    /* CTA */
     .cta {
         background: #1f8a70;
         color: white;
@@ -192,7 +192,6 @@
         padding: 20px;
     }
 
-    /* RESPONSIVO */
     @media (max-width: 768px) {
         .hero-text h1 {
             font-size: 2.2rem;
@@ -208,16 +207,16 @@
 
 <body>
 
+<!-- BOTÃO VOLTAR (CORRETO) -->
+<div class="back-home">
+    <a href="index.html"> Voltar para Home</a>
+</div>
+
 <!-- HERO -->
 <section class="hero">
     <div class="hero-container">
 
         <div class="hero-text">
-
-            <!-- BOTÃO VOLTAR -->
-            <div class="back-home">
-                <a href="index.html">← Voltar para Home</a>
-            </div>
 
             <h1>Oportunidades de Trabalho para Todas as Idades</h1>
 
@@ -227,7 +226,7 @@
                 que desejam novos desafios.
             </p>
 
-            <a href="#" class="btn">Ver Vagas Disponíveis</a>
+            <a href="vagas.html" class="btn">Ver Vagas Disponíveis</a>
 
         </div>
 
@@ -239,35 +238,17 @@
     </div>
 </section>
 
-<!-- TIPOS DE TRABALHO -->
+<!-- TIPOS -->
 <section class="section">
     <div class="section-title">
         <h2>Tipos de Oportunidades</h2>
-        <p>Encontre o trabalho ideal para seu perfil</p>
     </div>
 
     <div class="jobs">
-
-        <div class="card">
-            <h3>👶 Primeiro Emprego</h3>
-            <p>Oportunidades para jovens que estão começando no mercado de trabalho.</p>
-        </div>
-
-        <div class="card">
-            <h3>🎓 Estágio</h3>
-            <p>Experiência prática para estudantes que desejam se desenvolver profissionalmente.</p>
-        </div>
-
-        <div class="card">
-            <h3>💼 Profissionais</h3>
-            <p>Vagas para quem já possui experiência e busca crescimento na carreira.</p>
-        </div>
-
-        <div class="card">
-            <h3>🏆 Senior / Experientes</h3>
-            <p>Oportunidades para profissionais com longa trajetória no mercado.</p>
-        </div>
-
+        <div class="card"><h3>👶 Primeiro Emprego</h3></div>
+        <div class="card"><h3>🎓 Estágio</h3></div>
+        <div class="card"><h3>💼 Profissionais</h3></div>
+        <div class="card"><h3>🏆 Experientes</h3></div>
     </div>
 </section>
 
@@ -275,51 +256,26 @@
 <section class="section">
     <div class="section-title">
         <h2>Para Todas as Idades</h2>
-        <p>Inclusão e oportunidades em todas as fases da vida</p>
     </div>
 
     <div class="ages">
-
-        <div class="age-box">
-            <span>🧑‍🎓</span>
-            <h3>16 - 25 anos</h3>
-            <p>Jovens aprendizes, estágio e primeiro emprego.</p>
-        </div>
-
-        <div class="age-box">
-            <span>👨‍💼</span>
-            <h3>26 - 40 anos</h3>
-            <p>Desenvolvimento de carreira e crescimento profissional.</p>
-        </div>
-
-        <div class="age-box">
-            <span>👩‍💻</span>
-            <h3>41 - 60 anos</h3>
-            <p>Oportunidades de liderança e especialização.</p>
-        </div>
-
-        <div class="age-box">
-            <span>👴</span>
-            <h3>60+ anos</h3>
-            <p>Trabalho flexível e consultoria especializada.</p>
-        </div>
-
+        <div class="age-box"><span>🧑‍🎓</span><h3>16-25</h3></div>
+        <div class="age-box"><span>👨‍💼</span><h3>26-40</h3></div>
+        <div class="age-box"><span>👩‍💻</span><h3>41-60</h3></div>
+        <div class="age-box"><span>👴</span><h3>60+</h3></div>
     </div>
 </section>
 
 <!-- CTA -->
 <section class="cta">
     <h2>Encontre sua próxima oportunidade</h2>
-    <p>
-        A Interway conecta você às melhores oportunidades de trabalho,
-        independentemente da sua idade ou experiência.
-    </p>
+    <p>A Interway conecta você ao mercado de trabalho.</p>
 
     <a href="cadastro_curriculo.html" class="btn">Cadastrar Currículo</a>
 </section>
 
 <footer>
-    © 2026 Interway • Oportunidades de Trabalho para Todos
+    © 2026 Interway
 </footer>
 
 </body>

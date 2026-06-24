@@ -117,7 +117,8 @@ nav a:last-child:hover{
 /* HERO */
 
 .hero{
-    height:100vh;
+    min-height:100vh;
+    padding:140px 8% 80px;
     background:linear-gradient(rgba(62, 118, 228, 0.7), rgba(3, 4, 73, 0.7)),
     url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80');
     background-size:cover;
@@ -127,46 +128,52 @@ nav a:last-child:hover{
     justify-content:center;
     text-align:center;
     color:white;
-    padding:20px;
 }
 
-/* LOGO GRANDE HERO */
+/* CONTEÚDO CENTRAL */
+.hero-content{
+    max-width:800px;
+}
 
+/* LOGO FLUTUANTE */
 .hero-logo{
-    margin-top:100px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     animation:floatLogo 3s ease-in-out infinite;
 }
 
 .hero-logo img{
-    width: 450px;
+    width: 500px;;
     max-width:70%;
     filter:drop-shadow(0 10px 25px rgba(0,0,0,0.4));
 }
 
-/* animação */
+/* ANIMAÇÃO */
 @keyframes floatLogo{
     0%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
+    50%{transform:translateY(-10px);}
     100%{transform:translateY(0);}
 }
 
+/* TÍTULO */
 .hero-content h1{
     font-size:3rem;
     margin-bottom:15px;
+    line-height:1.2;
 }
 
+/* TEXTO */
 .hero-content p{
     font-size:1.2rem;
     margin-bottom:30px;
     opacity:.95;
 }
 
+/* BOTÃO */
 .btn{
     display:inline-block;
     background:#fff;
     color:#0057ff;
-    padding:15px 30px;
+    padding:14px 30px;
     border-radius:30px;
     text-decoration:none;
     font-weight:bold;
@@ -176,7 +183,6 @@ nav a:last-child:hover{
 .btn:hover{
     transform:translateY(-3px);
 }
-
 /* SEÇÕES */
 
 section{
@@ -187,6 +193,42 @@ section{
     text-align:center;
     margin-bottom:50px;
     color:#110350;
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARD LIMPO (SEM ESTILO DE LINK) */
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-decoration:none;   /* remove sublinhado */
+    color:#000;             /* remove azul de link */
+    display:block;          /* garante que o card inteiro é clicável */
+    transition:0.3s;
+}
+
+/* HOVER BONITO */
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* REMOVE QUALQUER ESTILO DE LINK VISITADO */
+.card:visited{
+    color:#000;
+}
+.card{
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 .cards{
@@ -266,7 +308,7 @@ footer{
 
     <div class="logo">
         <img src="img/logotipo.png" alt="Logo">
-        <h2>Interway</h2>
+        <h2>INTERWAY</h2>
     </div>
 
     <nav>
@@ -298,29 +340,29 @@ footer{
 </section>
 
 <section id="programas">
+
     <h2 class="section-title">Programas de Intercâmbio</h2>
 
     <div class="cards">
-        <div class="card">
-           <a href="estudos.html" class="card">
-            <h3>Estudos</h3>
-            <p>Explore as melhores oportunidades de estudo em universidades estrangeiras.</p>
-</a>
 
-        <div class="card">
-             <a href="trabalho.html" class="card">
-            <h3>Trabalho</h3>
-            <p>Programas de trabalho e experiência internacional.</p>
-</a>
-        </div>
+        <a href="estudos.html" class="card">
+            <h3> Estudos</h3>
+            <p>Explore oportunidades em universidades estrangeiras e programas acadêmicos internacionais.</p>
+        </a>
+
+        <a href="trabalho.html" class="card">
+            <h3> Trabalho</h3>
+            <p>Experiência profissional internacional e programas de trabalho no exterior.</p>
+        </a>
 
         <a href="cursos.html" class="card">
-            <h3>Idioma</h3>
-            <p>Aprenda inglês, espanhol e outros idiomas com as escolas mais renomadas</p>
-</a>
-    </div>
-</section>
+            <h3> Idiomas</h3>
+            <p>Aprenda inglês, espanhol e outros idiomas com imersão cultural completa.</p>
+        </a>
 
+    </div>
+
+</section>
 <section id="sobre" class="sobre">
     <h2 class="section-title">Sobre a Plataforma</h2>
 
