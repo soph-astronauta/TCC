@@ -69,16 +69,37 @@ nav ul{
     list-style:none;
     gap:28px;
     align-items:center;
+    flex-wrap:wrap; /* 🔥 permite quebrar linha */
+    justify-content:flex-end;
 }
 
+/* LINKS */
 nav a{
-    position:relative;
     text-decoration:none;
     color:#e5e7eb;
     font-weight:600;
     font-size:15px;
-    transition:.3s;
     padding:6px 0;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px){
+
+    header{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+    nav ul{
+        justify-content:center;
+        gap:15px;
+        padding-top:10px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
 }
 
 /* underline animado */
@@ -252,8 +273,54 @@ section{
 /* SOBRE */
 .sobre{
     background:#7b92c7;
+    color:#fff;
+    padding:80px 8%;
 }
 
+/* CONTAINER LADO A LADO */
+.sobre-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+    flex-wrap:wrap;
+}
+
+/* IMAGEM */
+.sobre-img{
+    flex:1;
+    min-width:300px;
+}
+
+.sobre-img img{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* TEXTO */
+.sobre-texto{
+    flex:1;
+    min-width:300px;
+}
+
+.sobre-texto p{
+    text-align:left;
+    line-height:1.7;
+    font-size:1rem;
+}
+@media (max-width:768px){
+    .sobre-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .sobre-texto p{
+        text-align:center;
+    }
+}
 /* CONTATO */
 
 .contato{
@@ -364,15 +431,39 @@ footer{
 
 </section>
 <section id="sobre" class="sobre">
+
     <h2 class="section-title">Sobre a Plataforma</h2>
 
-    <p style="text-align:center; max-width:800px; margin:auto;">
-        A Interway é uma plataforma desenvolvida para facilitar a jornada dos intercambistas, reunindo em um único ambiente informações, serviços e ferramentas essenciais para quem deseja estudar, trabalhar ou viver uma experiência internacional.
+    <div class="sobre-container">
 
-        Com uma navegação simples e intuitiva, a plataforma ajuda os usuários a encontrar oportunidades de intercâmbio, acompanhar processos, acessar conteúdos relevantes e se conectar com instituições e programas em diferentes países. Além disso, a Interway oferece suporte para tornar cada etapa mais organizada, desde o planejamento da viagem até a adaptação ao destino escolhido.
+        <!-- IMAGEM ESQUERDA -->
+        <div class="sobre-img">
+            <img src="img/intercambistas.jpg" 
+                 alt="Intercâmbio internacional">
+        </div>
 
-        Seja para estudar um novo idioma, ampliar experiências profissionais ou vivenciar outras culturas, a Interway torna o intercâmbio mais acessível, seguro e eficiente, ajudando estudantes a transformarem seus objetivos internacionais em realidade.
-    </p>
+        <!-- TEXTO DIREITA -->
+        <div class="sobre-texto">
+
+            <p>
+                A Interway é uma plataforma desenvolvida para facilitar a jornada dos intercambistas,
+                reunindo em um único ambiente informações, serviços e ferramentas essenciais para quem
+                deseja estudar, trabalhar ou viver uma experiência internacional.
+                <br><br>
+
+                Com uma navegação simples e intuitiva, a plataforma ajuda os usuários a encontrar oportunidades
+                de intercâmbio, acompanhar processos, acessar conteúdos relevantes e se conectar com instituições
+                e programas em diferentes países.
+                <br><br>
+
+                Seja para estudar um novo idioma, ampliar experiências profissionais ou vivenciar outras culturas,
+                a Interway torna o intercâmbio mais acessível, seguro e eficiente.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
 
 <section id="contato" class="contato">

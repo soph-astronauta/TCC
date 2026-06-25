@@ -6,207 +6,213 @@
 <title>Oportunidades de Estudo em Universidades Estrangeiras</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+    line-height:1.6;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(135deg, #0f4c81, #1b7ed6);
+    color:white;
+    padding:80px 8%;
+}
+
+.hero-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:300px;
+}
+
+.hero-text h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hero-text p{
+    font-size:1.1rem;
+    opacity:0.95;
+    margin-bottom:30px;
+}
+
+/* BOTÃO VOLTAR */
+.back-home{
+    margin-bottom:25px;
+}
+
+.back-home a{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:50px;
+    background:rgba(255,255,255,0.1);
+    transition:.3s;
+}
+
+.back-home a:hover{
+    background:rgba(255,255,255,0.2);
+    transform:translateX(-3px);
+}
+
+/* BOTÃO PRINCIPAL */
+.btn{
+    display:inline-block;
+    background:#fff;
+    color:#0f4c81;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* IMAGEM HERO */
+.hero-image{
+    flex:1;
+    min-width:320px;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* SEÇÕES */
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    color:#0f4c81;
+    font-size:2.2rem;
+    margin-bottom:10px;
+}
+
+/* BENEFÍCIOS */
+.benefits{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h3{
+    color:#0f4c81;
+    margin-bottom:10px;
+}
+
+/* DESTINOS */
+.destinations{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:25px;
+}
+
+.country{
+    background:white;
+    text-align:center;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.country:hover{
+    transform:translateY(-6px);
+}
+
+.country img{
+    width:70px;
+    margin-bottom:10px;
+}
+
+.country h3{
+    color:#0f4c81;
+    font-size:1.1rem;
+}
+
+/* CTA */
+.cta{
+    background:#0f4c81;
+    color:white;
+    text-align:center;
+    padding:80px 8%;
+}
+
+.cta h2{
+    font-size:2.3rem;
+    margin-bottom:20px;
+}
+
+.cta p{
+    max-width:700px;
+    margin:0 auto 30px;
+}
+
+/* FOOTER */
+footer{
+    background:#082b4d;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* RESPONSIVO */
+@media (max-width:768px){
+    .hero-text h1{
+        font-size:2.2rem;
     }
 
-    body {
-        background: #f5f7fb;
-        color: #333;
-        line-height: 1.7;
+    .hero-container{
+        flex-direction:column;
+        text-align:center;
     }
-
-    /* HERO */
-    .hero {
-        background: linear-gradient(135deg, #0f4c81, #1b7ed6);
-        color: white;
-        padding: 80px 8%;
-    }
-
-    .hero-container {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 50px;
-        flex-wrap: wrap;
-    }
-
-    .hero-text {
-        flex: 1;
-        min-width: 300px;
-    }
-
-    .hero-text h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
-
-    .hero-text p {
-        font-size: 1.1rem;
-        opacity: 0.95;
-        margin-bottom: 30px;
-    }
-
-    /* BOTÃO HOME */
-    .back-home {
-        margin-bottom: 25px;
-    }
-
-    .back-home a {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 18px;
-        border: 1px solid rgba(255,255,255,0.4);
-        border-radius: 50px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(5px);
-        transition: all .3s ease;
-        font-size: 0.95rem;
-    }
-
-    .back-home a:hover {
-        background: rgba(255,255,255,0.2);
-        transform: translateX(-4px);
-    }
-
-    /* BOTÃO PRINCIPAL */
-    .btn {
-        display: inline-block;
-        background: #fff;
-        color: #0f4c81;
-        text-decoration: none;
-        padding: 14px 28px;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: .3s;
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-    }
-
-    .hero-image {
-        flex: 1;
-        min-width: 320px;
-    }
-
-    .hero-image img {
-        width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    }
-
-    /* SEÇÕES */
-    .section {
-        max-width: 1200px;
-        margin: auto;
-        padding: 80px 8%;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    .section-title h2 {
-        color: #0f4c81;
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-    }
-
-    .benefits {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-    }
-
-    .card {
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        transition: .3s;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card h3 {
-        color: #0f4c81;
-        margin-bottom: 15px;
-    }
-
-    /* DESTINOS */
-    .destinations {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-    }
-
-    .country {
-        background: white;
-        text-align: center;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
-    .country span {
-        font-size: 2.5rem;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    /* CTA */
-    .cta {
-        background: #0f4c81;
-        color: white;
-        text-align: center;
-        padding: 80px 8%;
-    }
-
-    .cta h2 {
-        font-size: 2.3rem;
-        margin-bottom: 20px;
-    }
-
-    .cta p {
-        max-width: 700px;
-        margin: 0 auto 30px;
-    }
-
-    footer {
-        background: #082b4d;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-        .hero-text h1 {
-            font-size: 2.2rem;
-        }
-
-        .hero-container {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .back-home {
-            text-align: center;
-        }
-    }
+}
 </style>
 </head>
 
@@ -218,25 +224,23 @@
 
         <div class="hero-text">
 
-            <!-- BOTÃO VOLTAR -->
             <div class="back-home">
-                <a href="index.html">← Voltar para Home</a>
+                <a href="index.html"> Voltar para Home</a>
             </div>
 
             <h1>Oportunidades de Estudo em Universidades Estrangeiras</h1>
 
             <p>
                 Descubra programas acadêmicos internacionais, universidades renomadas
-                e oportunidades que podem transformar sua formação e impulsionar sua carreira global.
+                e oportunidades que podem transformar sua formação e carreira.
             </p>
 
-            <a href="#" class="btn">Explorar Universidades</a>
+            <a href="bolsas.html" class="btn">Explorar Universidades</a>
 
         </div>
 
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900"
-                 alt="Estudantes internacionais">
+            <img src="img/pexels-marwen-larafa-2159807713-37715003.jpg" alt="Estudantes internacionais">
         </div>
 
     </div>
@@ -258,17 +262,17 @@
 
         <div class="card">
             <h3>🎓 Excelência Acadêmica</h3>
-            <p>Universidades reconhecidas globalmente e ensino de alta qualidade.</p>
+            <p>Universidades reconhecidas globalmente e ensino de qualidade.</p>
         </div>
 
         <div class="card">
             <h3>💼 Carreira Global</h3>
-            <p>Maior competitividade no mercado de trabalho internacional.</p>
+            <p>Maior competitividade no mercado internacional.</p>
         </div>
 
         <div class="card">
             <h3>🗣️ Idiomas</h3>
-            <p>Aprenda na prática através da imersão cultural.</p>
+            <p>Aprenda na prática com imersão cultural.</p>
         </div>
 
     </div>
@@ -278,28 +282,28 @@
 <section class="section">
     <div class="section-title">
         <h2>Destinos Populares</h2>
-        <p>Escolha onde quer viver sua experiência internacional.</p>
+        <p>Escolha onde viver sua experiência internacional.</p>
     </div>
 
     <div class="destinations">
 
         <div class="country">
-            <span>🇺🇸</span>
+            <img src="https://flagcdn.com/w320/us.png" alt="EUA">
             <h3>Estados Unidos</h3>
         </div>
 
         <div class="country">
-            <span>🇨🇦</span>
+            <img src="https://flagcdn.com/w320/ca.png" alt="Canadá">
             <h3>Canadá</h3>
         </div>
 
         <div class="country">
-            <span>🇬🇧</span>
+            <img src="https://flagcdn.com/w320/gb.png" alt="Reino Unido">
             <h3>Reino Unido</h3>
         </div>
 
         <div class="country">
-            <span>🇦🇺</span>
+            <img src="https://flagcdn.com/w320/au.png" alt="Austrália">
             <h3>Austrália</h3>
         </div>
 
@@ -309,9 +313,7 @@
 <!-- CTA -->
 <section class="cta">
     <h2>Comece sua Jornada Internacional</h2>
-    <p>
-        A Interway conecta estudantes às melhores oportunidades de estudo no exterior.
-    </p>
+    <p>A Interway conecta estudantes às melhores oportunidades de estudo no exterior.</p>
 
     <a href="#" class="btn">Fale com um Consultor</a>
 </section>
