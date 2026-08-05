@@ -37,3 +37,20 @@ class Banco
 }
 
 ?>
+
+--quiz
+CREATE TABLE leads (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+nome VARCHAR(100),
+
+email VARCHAR(150),
+
+telefone VARCHAR(30),
+
+resultado VARCHAR(100),
+
+dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
