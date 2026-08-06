@@ -364,6 +364,76 @@ footer{
     text-align:center;
     padding:20px;
 }
+/*integrantes*/
+.integrantes {
+    padding: 60px 20px;
+    background: #f5f7fb;
+    text-align: center;
+}
+
+.integrantes h2 {
+    font-size: 36px;
+    color: #1f4e79;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    width: 250px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.1);
+    padding: 25px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #1f4e79;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #1f4e79;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #555;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 320px;
+    }
+}
 
 </style>
 </head>
@@ -430,51 +500,81 @@ footer{
     </div>
 
 </section>
-<section id="sobre" class="sobre">
+    <section id="sobre" class="sobre">
 
-    <h2 class="section-title">Sobre a Plataforma</h2>
+        <h2 class="section-title">Sobre a Plataforma</h2>
 
-    <div class="sobre-container">
+        <div class="sobre-container">
 
-        <!-- IMAGEM ESQUERDA -->
-        <div class="sobre-img">
-            <img src="img/intercambistas.jpg" 
-                 alt="Intercâmbio internacional">
-        </div>
+            <!-- IMAGEM ESQUERDA -->
+            <div class="sobre-img">
+                <img src="img/intercambistas.jpg" 
+                    alt="Intercâmbio internacional">
+            </div>
 
-        <!-- TEXTO DIREITA -->
-        <div class="sobre-texto">
+            <!-- TEXTO DIREITA -->
+            <div class="sobre-texto">
 
-            <p>
-                A Interway é uma plataforma desenvolvida para facilitar a jornada dos intercambistas,
-                reunindo em um único ambiente informações, serviços e ferramentas essenciais para quem
-                deseja estudar, trabalhar ou viver uma experiência internacional.
-                <br><br>
+                <p>
+                    A Interway é uma plataforma desenvolvida para facilitar a jornada dos intercambistas,
+                    reunindo em um único ambiente informações, serviços e ferramentas essenciais para quem
+                    deseja estudar, trabalhar ou viver uma experiência internacional.
+                    <br><br>
 
-                Com uma navegação simples e intuitiva, a plataforma ajuda os usuários a encontrar oportunidades
-                de intercâmbio, acompanhar processos, acessar conteúdos relevantes e se conectar com instituições
-                e programas em diferentes países.
-                <br><br>
+                    Com uma navegação simples e intuitiva, a plataforma ajuda os usuários a encontrar oportunidades
+                    de intercâmbio, acompanhar processos, acessar conteúdos relevantes e se conectar com instituições
+                    e programas em diferentes países.
+                    <br><br>
 
-                Seja para estudar um novo idioma, ampliar experiências profissionais ou vivenciar outras culturas,
-                a Interway torna o intercâmbio mais acessível, seguro e eficiente.
+                    Seja para estudar um novo idioma, ampliar experiências profissionais ou vivenciar outras culturas,
+                    a Interway torna o intercâmbio mais acessível, seguro e eficiente.
+                </p>
+
+            </div>
+
+            <section class="integrantes">
+                <h2>Equipe de Desenvolvimento</h2>
+                <p class="descricao">
+            Conheça os integrantes responsáveis pelo desenvolvimento da plataforma InterWay.
             </p>
 
+        <div class="cards">
+
+            <div class="card">
+                <img src="imagens/perfil.png" alt="Integrante">
+                <h3>Sopa</h3>
+                <p>Gerente do Projeto</p>
+            </div>
+
+            <div class="card">
+                <img src="imagens/perfil.png" alt="Integrante">
+                <h3>Lorenzo Muller</h3>
+                <p>Desenvolvedor Backend</p>
+            </div>
+
+            <div class="card">
+                <img src="imagens/perfil.png" alt="Integrante">
+                <h3>João Pedro</h3>
+                <p>Desenvolvedor Frontend</p>
+            </div>
+
+            <div class="card">
+                <img src="imagens/perfil.png" alt="Integrante">
+                <h3>Matheus</h3>
+                <p>Designer UI/UX</p>
+            </div>
+            <div class="card">
+                <img src="imagens/perfil.png" alt="Integrante">
+                <h3>Tamires Anastacio</h3>
+                <p>Designer UI/UX</p>
+            </div>
+
+        </div>
+    </section>
+
         </div>
 
-        <div class="integrantes">
-
-            <p>
-              Esses são os integrantes do grupo:
-                <br><br>
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
+    </section>
 
 <section id="contato" class="contato">
     <h2 class="section-title">Entre em Contato</h2>
