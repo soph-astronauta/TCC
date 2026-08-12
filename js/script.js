@@ -152,3 +152,43 @@ function mostrarResultado() {
 
 // Inicializa o quiz
 carregarPergunta();
+
+// função do quiz
+
+function mostrarResultado() {
+  document.getElementById("pergunta").style.display = "none";
+  document.getElementById("opcoes").style.display = "none";
+
+  // Descobre qual tipo teve mais pontos
+  let tipoVencedor = Object.keys(pontuacao).reduce((a, b) => 
+    pontuacao[a] > pontuacao[b] ? a : b
+  );
+
+  const mensagens = {
+    idioma: "Intercâmbio de Idiomas",
+    trabalho: "Intercâmbio de Estudo e Trabalho",
+    voluntariado: "Voluntariado Internacional",
+    academico: "Intercâmbio Acadêmico"
+  };
+
+  const resultadoTexto = mensagens[tipoVencedor];
+
+  const elementoResultado = document.getElementById("resultado");
+  elementoResultado.classList.remove("escondido");
+
+  // Injeta o resultado e o formulário que envia para o PHP
+  elementoResultado.innerHTML = `
+    <h3>Seu resultado ideal é: ${resultadoTexto}!</h3>
+    <p>Preencha os dados abaixo para salvar seu resultado e receber mais informações:</p>
+    
+    <form action="salvar_lead.php" method="POST" class="form-lead">
+      <input type="hidden" name="resultado" value="${resultadoTexto}">
+
+      <input type="text" name="nome" placeholder="Seu Nome" required>
+      <input type="email" name="email" placeholder="Seu E-mail" required>
+      <input type="tel" name="telefone" placeholder="Seu Telefone / WhatsApp" required>
+
+      <button type="submit">Receber Informações</button>
+    </form>
+  `;
+}
