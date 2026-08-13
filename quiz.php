@@ -1,6 +1,16 @@
 <?php
 include "conexao.php";
 
+$dados = json_decode(file_get_contents("php://input"), true);
+
+$email = $dados["email"];
+$senha = $dados["senha"];
+
+echo json_encode([
+    "sucesso" => true,
+    "mensagem" => "Login realizado!"
+]);
+
 // Recebe os dados do formulário
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';

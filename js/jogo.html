@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Exemplo substituindo o botão "Mais" no seu index.html -->
+<li><a href="quiz.html">Fazer Quiz</a></li>
+
+<!-- Insira este bloco entre as seções do seu <body> -->
+<section id="quiz" class="quiz-section">
+    <div class="quiz-container" id="quiz-box">
+        <!-- O JavaScript vai injetar o quiz aqui dentro automaticamente -->
+    </div>
+</section>
+
+<!-- Cole no final do arquivo, antes de </body> -->
+<script>
+    const quizData = [
+        {
+            question: "Qual palavra-chave é usada para declarar uma variável que não pode ser reatribuída?",
+            options: ["var", "let", "const", "set"],
+            correct: 2
+        },
+        {
+            question: "Qual é o resultado de typeof null em JavaScript?",
+            options: ["'null'", "'undefined'", "'object'", "'number'"],
+            correct: 2
+        },
+        {
+            question: "Como escrevemos um comentário de linha única em JavaScript?",
+            options: ["<!-- comentário -->", "// comentário", "/* comentário */", "# comentário"],
+            correct: 1
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    // Ajustado para apontar para o ID correto da div
+    const quizContainer = document.getElementById("quiz-box"); 
+
+    function loadQuiz() {
+        answered = false;
+        const currentData = quizData[currentQuestion];
+
+        quizContainer.innerHTML = `
+            <h2>Pergunta ${currentQuestion + 1} de ${quizData.length}</h2>
+            <p style="color:#000; font-weight:600; margin-bottom:15px;">${currentData.question}</p>
+            <div class="options-container">
+                ${currentData.options.map((option, index) => `
+                    <button class="btn-option" onclick="selectAnswer(${index}, this)">
+                        ${option}
+                    </button>
+                `).join('')}
+            </div>
+            <button class="btn-next" id="next-btn" disabled onclick="nextQuestion()">Próxima</button>
+        `;
+    }
+
+    function selectAnswer(selectedIndex, buttonClicked) {
+        if (answered) return;
+        answered = true;
+
+        const currentData = quizData[currentQuestion];
+        const buttons = document.querySelectorAll(".btn-option");
+
+        if (selectedIndex === currentData.correct) {
+            buttonClicked.classList.add("correct");
+            score++;
+        } else {
+            buttonClicked.classList.add("wrong");
+            buttons[currentData.correct].classList.add("correct");
+        }
+
+        document.getElementById("next-btn").disabled = false;
+    }
+
+    function nextQuestion() {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+            loadQuiz();
+        } else {
+            showResults();
+        }
+    }
+
+    function showResults() {
+        quizContainer.innerHTML = `
+            <div class="score-container">
+                <h2 style="color:#000;">Quiz Concluído! 🎉</h2>
+                <p style="color:#000; margin: 15px 0;">Você acertou <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas.</p>
+                <button class="btn-next" onclick="resetQuiz()">Refazer Quiz</button>
+            </div>
+        `;
+    }
+
+    function resetQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        loadQuiz();
+    }
+
+    loadQuiz();
+</script>
+
+
+<style>
+    /* Cole este bloco no final do seu <style> atual */
+:root {
+    --primary-color: #4a90e2;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --quiz-bg: #f5f6fa;
+}
+.quiz-section {
+    background-color: var(--quiz-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 8%;
+}
+.quiz-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.quiz-container h2 { margin-top: 0; color: #333; font-size: 1.8rem; text-align: center;}
+.options-container { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.btn-option { background-color: #fff; border: 2px solid #ddd; border-radius: 6px; padding: 12px; font-size: 16px; cursor: pointer; transition: all 0.2s ease; text-align: left; width: 100%;}
+.btn-option:hover { background-color: #f0f0f0; border-color: #bbb; }
+.correct { background-color: var(--success-color) !important; color: white; border-color: var(--success-color); }
+.wrong { background-color: var(--error-color) !important; color: white; border-color: var(--error-color); }
+.btn-next { background-color: var(--primary-color); color: white; border: none; border-radius: 6px; padding: 12px; width: 100%; font-size: 16px; cursor: pointer; font-weight: bold; }
+.btn-next:disabled { background-color: #ccc; cursor: not-allowed; }
+.score-container { text-align: center; }
+</style>
+</body>
+</html>

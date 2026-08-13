@@ -176,19 +176,21 @@ function mostrarResultado() {
   const elementoResultado = document.getElementById("resultado");
   elementoResultado.classList.remove("escondido");
 
-  // Injeta o resultado e o formulário que envia para o PHP
-  elementoResultado.innerHTML = `
-    <h3>Seu resultado ideal é: ${resultadoTexto}!</h3>
-    <p>Preencha os dados abaixo para salvar seu resultado e receber mais informações:</p>
-    
-    <form action="salvar_lead.php" method="POST" class="form-lead">
-      <input type="hidden" name="resultado" value="${resultadoTexto}">
-
-      <input type="text" name="nome" placeholder="Seu Nome" required>
-      <input type="email" name="email" placeholder="Seu E-mail" required>
-      <input type="tel" name="telefone" placeholder="Seu Telefone / WhatsApp" required>
-
-      <button type="submit">Receber Informações</button>
-    </form>
-  `;
 }
+
+//funcionamento do quiz
+
+fetch("php/login.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email: email,
+        senha: senha
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+});
