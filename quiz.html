@@ -1,101 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz de Intercâmbio</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
   <link rel="stylesheet" href="style.css">
-  ]<script src="js/script.js"></script>
 </head>
 <body>
 
-  <div id="quiz-container">
-    <h2 id="pergunta">Carregando pergunta...</h2>
-    <div id="opcoes"></div>
-    <div id="resultado" class="escondido"></div>
-  </div>
-
-  <script src="script.js"></script>
-
-  <form action="php/login.php" method="POST">
-    <input type="email" name="email">
-    <input type="password" name="senha">
-
-    <button type="submit">Entrar</button>
-</form>
+  <h2>QUIZ APP</h2>
+  <main>
+    <div class="content">
+      <span class="spnQtd"></span>
+      <span class="question"></span>
+      <div class="answers"></div>
+    </div>
+    <div class="finish">
+      <span></span>
+      <button>Reiniciar</button>
+    </div>
+  </main>
+  
+  <script src="script.js" type="module"></script>
 </body>
 </html>
-
-<style>
-    body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f4f4f9;
-}
-
-#quiz-container {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-}
-
-#opcoes button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #007bff;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.2s;
-}
-
-#opcoes button:hover {
-  background-color: #0056b3;
-}
-
-.escondido {
-  display: none;
-}
-
-.form-lead {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.form-lead input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.form-lead button {
-  padding: 12px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.form-lead button:hover {
-  background-color: #218838;
-}
-</style>
-
