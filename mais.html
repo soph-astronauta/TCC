@@ -280,6 +280,145 @@ footer{
             <div class="icon">🎮</div>
             <h3>Quiz</h3>
             <p>Descubra qual o intercambio ideal para voce.</p>
+            <!-- QUIZ AUTÔNOMO (Cole exatamente aqui) -->
+<meu-quiz></meu-quiz>
+
+<script>
+  class MeuQuiz extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+      this.indice = 0;
+      this.pontuacao = 0;
+      
+      this.perguntas = [
+        {
+          pergunta: "Qual é a capital do Brasil?",
+          opcoes: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+          resposta: 2
+        },
+        {
+          pergunta: "Quanto é 2 + 2?",
+          opcoes: ["3", "4", "5", "6"],
+          resposta: 1
+        },
+        {
+          pergunta: "Qual linguagem roda no navegador?",
+          opcoes: ["Java", "C++", "Python", "JavaScript"],
+          resposta: 3
+        }
+      ];
+    }
+
+    connectedCallback() {
+      this.render();
+      this.carregarPergunta();
+    }
+
+    render() {
+      this.shadowRoot.innerHTML = `
+        <style>
+          :host {
+            display: block;
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          }
+          h3 { margin-top: 0; color: #333; }
+          .btn-opt {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            cursor: pointer;
+            font-size: 14px;
+          }
+          .btn-opt:hover { background: #eee; }
+          .btn-opt.correta { background: #28a745 !important; color: white; }
+          .btn-opt.errada { background: #dc3545 !important; color: white; }
+          #btn-prox {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none;
+          }
+          .escondido { display: none; }
+        </style>
+        <div id="quiz-body">
+          <h3 id="titulo-pergunta"></h3>
+          <div id="caixa-opcoes"></div>
+          <button id="btn-prox">Próxima Pergunta</button>
+        </div>
+        <div id="caixa-resultado" class="escondido"></div>
+      `;
+
+      this.shadowRoot.getElementById('btn-prox').onclick = () => this.proxima();
+    }
+
+    carregarPergunta() {
+      const q = this.perguntas[this.indice];
+      this.shadowRoot.getElementById('titulo-pergunta').innerText = q.pergunta;
+      
+      const btnProx = this.shadowRoot.getElementById('btn-prox');
+      btnProx.style.display = 'none';
+
+      const divOpcoes = this.shadowRoot.getElementById('caixa-opcoes');
+      divOpcoes.innerHTML = '';
+
+      q.opcoes.forEach((opcao, i) => {
+        const btn = document.createElement('button');
+        btn.innerText = opcao;
+        btn.className = 'btn-opt';
+        btn.onclick = () => this.verificar(btn, i);
+        divOpcoes.appendChild(btn);
+      });
+    }
+
+    verificar(btnClicado, indiceSel) {
+      const q = this.perguntas[this.indice];
+      const todosBotoes = this.shadowRoot.querySelectorAll('.btn-opt');
+
+      todosBotoes.forEach(b => b.disabled = true);
+
+      if (indiceSel === q.resposta) {
+        btnClicado.classList.add('correta');
+        this.pontuacao++;
+      } else {
+        btnClicado.classList.add('errada');
+        todosBotoes[q.resposta].classList.add('correta');
+      }
+
+      this.shadowRoot.getElementById('btn-prox').style.display = 'inline-block';
+    }
+
+    proxima() {
+      this.indice++;
+      if (this.indice < this.perguntas.length) {
+        this.carregarPergunta();
+      } else {
+        this.shadowRoot.getElementById('quiz-body').classList.add('escondido');
+        const res = this.shadowRoot.getElementById('caixa-resultado');
+        res.classList.remove('escondido');
+        res.innerHTML = `<h3>Fim do Quiz!</h3><p>Você acertou ${this.pontuacao} de ${this.perguntas.length} perguntas.</p>`;
+      }
+    }
+  }
+
+  customElements.define('meu-quiz', MeuQuiz);
+</script>
 
     </div>
 

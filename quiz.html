@@ -1,28 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
+  <title>Quiz em JavaScript</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="quiz-container">
+    <h2 id="pergunta">Pergunta aqui</h2>
+    <div id="opcoes"></div>
+    <button id="btn-proximo" onclick="proximaPergunta()">Próxima</button>
+    <div id="resultado" class="escondido"></div>
+  </div>
 
-  <h2>QUIZ APP</h2>
-  <main>
-    <div class="content">
-      <span class="spnQtd"></span>
-      <span class="question"></span>
-      <div class="answers"></div>
-    </div>
-    <div class="finish">
-      <span></span>
-      <button>Reiniciar</button>
-    </div>
-  </main>
+  <script src="script.js"></script>
   
-  <script src="script.js" type="module"></script>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f2f5;
+}
+
+.quiz-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e2e2e2;
+}
+
+.escondido {
+  display: none;
+}
+</style>
 </body>
 </html>

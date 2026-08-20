@@ -63,3 +63,64 @@ function loadQuestion() {
 }
 
 loadQuestion();
+
+const perguntas = [
+  {
+    pergunta: "Qual é a capital do Brasil?",
+    opcoes: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+    respostaCorreta: 2
+  },
+  {
+    pergunta: "Quanto é 2 + 2?",
+    opcoes: ["3", "4", "5", "6"],
+    respostaCorreta: 1
+  }
+];
+
+let indicePerguntaAtual = 0;
+let pontuacao = 0;
+
+function carregarPergunta() {
+  const q = perguntas[indicePerguntaAtual];
+  document.getElementById("pergunta").innerText = q.pergunta;
+  
+  const divOpcoes = document.getElementById("opcoes");
+  divOpcoes.innerHTML = "";
+
+  q.opcoes.forEach((opcao, index) => {
+    const btn = document.createElement("button");
+    btn.innerText = opcao;
+    btn.onclick = () => verificarResposta(index);
+    divOpcoes.appendChild(btn);
+  });
+}
+
+//quiz
+function verificarResposta(indiceSelecionado) {
+  if (indiceSelecionado === perguntas[indicePerguntaAtual].respostaCorreta) {
+    pontuacao++;
+  }
+  proximaPergunta();
+}
+
+function proximaPergunta() {
+  indicePerguntaAtual++;
+  if (indicePerguntaAtual < perguntas.length) {
+    carregarPergunta();
+  } else {
+    exibirResultado();
+  }
+}
+
+function exibirResultado() {
+  document.getElementById("pergunta").classList.add("escondido");
+  document.getElementById("opcoes").classList.add("escondido");
+  document.getElementById("btn-proximo").classList.add("escondido");
+  
+  const divResultado = document.getElementById("resultado");
+  divResultado.classList.remove("escondido");
+  divResultado.innerText = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+}
+
+// Inicializa o quiz ao carregar a página
+carregarPergunta();
