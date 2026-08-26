@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Planeje seu Intercâmbio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f0ff;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #313ee9, #4e60c4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #3b57d3;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .campo label {
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .campo input,
+        .campo select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .campo input:focus,
+        .campo select:focus {
+            outline: none;
+            border-color: #3f67ec;
+        }
+
+        button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn-principal {
+            background: #6270c2;
+            color: white;
+        }
+
+        .btn-principal:hover {
+            background: #0b2099;
+        }
+
+        .btn-excluir {
+            background: #e53935;
+            color: white;
+            margin-top: 0;
+        }
+
+        .resumo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .resumo-box {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .resumo-box h3 {
+            color: #34a9df;
+            margin-bottom: 8px;
+        }
+
+        .resumo-box p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .tarefa {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            gap: 10px;
+        }
+
+        .tarefa-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tarefa-concluida {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .progresso-container {
+            background: #ddd;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progresso {
+            background: #5b6bfa;
+            height: 100%;
+            width: 0%;
+            transition: 0.3s;
+        }
+
+        .adicionar-tarefa {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .adicionar-tarefa input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        footer {
+            background: #245dd8;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid,
+            .resumo {
+                grid-template-columns: 1fr;
+            }
+
+            .adicionar-tarefa {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>✈️ Meu Planejamento de Intercâmbio</h1>
+    <p>Organize sua viagem, seus documentos, seu orçamento e suas tarefas.</p>
+</header>
+
+<div class="container">
+
+    <!-- DADOS DO INTERCÂMBIO -->
+    <div class="card">
+        <h2>🌎 Dados do intercâmbio</h2>
+
+        <div class="form-grid">
+
+            <div class="campo">
+                <label for="destino">Destino</label>
+                <input type="text" id="destino" placeholder="Ex: Canadá">
+            </div>
+
+            <div class="campo">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" placeholder="Ex: Toronto">
+            </div>
+
+            <div class="campo">
+                <label for="dataInicio">Data de início</label>
+                <input type="date" id="dataInicio">
+            </div>
+
+            <div class="campo">
+                <label for="dataFim">Data de término</label>
+                <input type="date" id="dataFim">
+            </div>
+
+            <div class="campo">
+                <label for="tipo">Tipo de intercâmbio</label>
+                <select id="tipo">
+                    <option value="">Selecione</option>
+                    <option value="Estudo">Estudo</option>
+                    <option value="Curso de idiomas">Curso de idiomas</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Voluntariado">Voluntariado</option>
+                    <option value="Ensino médio">Ensino médio</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="orcamento">Orçamento (R$)</label>
+                <input type="number" id="orcamento" placeholder="Ex: 15000">
+            </div>
+
+        </div>
+
+        <button class="btn-principal" onclick="salvarDados()">
+            💾 Salvar planejamento
+        </button>
+    </div>
+
+
+    <!-- RESUMO -->
+    <div class="card">
+        <h2>📊 Resumo</h2>
+
+        <div class="resumo">
+
+            <div class="resumo-box">
+                <h3>Destino</h3>
+                <p id="resumoDestino">-</p>
+            </div>
+
+            <div class="resumo-box">
+                <h3>Tipo</h3>
+                <p id="resumoTipo">-</p>
+            </div>
+
+            <div class="resumo-box">
+                <h3>Orçamento</h3>
+                <p id="resumoOrcamento">R$ 0,00</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TAREFAS -->
+    <div class="card">
+        <h2>✅ Minhas tarefas</h2>
+
+        <div class="adicionar-tarefa">
+            <input
+                type="text"
+                id="novaTarefa"
+                placeholder="Ex: Solicitar passaporte"
+            >
+
+            <button class="btn-principal" onclick="adicionarTarefa()">
+                + Adicionar
+            </button>
+        </div>
+
+        <div id="listaTarefas"></div>
+
+        <p style="margin-top: 20px;">
+            Progresso: <strong id="porcentagem">0%</strong>
+        </p>
+
+        <div class="progresso-container">
+            <div class="progresso" id="barraProgresso"></div>
+        </div>
+    </div>
+
+
+    <!-- DOCUMENTOS -->
+    <div class="card">
+        <h2>📄 Documentos importantes</h2>
+
+        <div id="documentos">
+
+            <div class="tarefa">
+                <div class="tarefa-info">
+                    <input type="checkbox" onchange="atualizarDocumentos()">
+                    <span>Passaporte</span>
+                </div>
+            </div>
+
+            <div class="tarefa">
+                <div class="tarefa-info">
+                    <input type="checkbox" onchange="atualizarDocumentos()">
+                    <span>Visto</span>
+                </div>
+            </div>
+
+            <div class="tarefa">
+                <div class="tarefa-info">
+                    <input type="checkbox" onchange="atualizarDocumentos()">
+                    <span>Seguro viagem</span>
+                </div>
+            </div>
+
+            <div class="tarefa">
+                <div class="tarefa-info">
+                    <input type="checkbox" onchange="atualizarDocumentos()">
+                    <span>Comprovante de matrícula</span>
+                </div>
+            </div>
+
+            <div class="tarefa">
+                <div class="tarefa-info">
+                    <input type="checkbox" onchange="atualizarDocumentos()">
+                    <span>Passagens aéreas</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p> Planeje seu intercâmbio com organização e tranquilidade.</p>
+</footer>
+
+
+<script>
+
+    // SALVAR DADOS
+    function salvarDados() {
+
+        const dados = {
+            destino: document.getElementById("destino").value,
+            cidade: document.getElementById("cidade").value,
+            dataInicio: document.getElementById("dataInicio").value,
+            dataFim: document.getElementById("dataFim").value,
+            tipo: document.getElementById("tipo").value,
+            orcamento: document.getElementById("orcamento").value
+        };
+
+        localStorage.setItem("intercambio", JSON.stringify(dados));
+
+        atualizarResumo();
+
+        alert("Planejamento salvo com sucesso!");
+    }
+
+
+    // MOSTRAR RESUMO
+    function atualizarResumo() {
+
+        const dadosSalvos = localStorage.getItem("intercambio");
+
+        if (!dadosSalvos) {
+            return;
+        }
+
+        const dados = JSON.parse(dadosSalvos);
+
+        document.getElementById("resumoDestino").textContent =
+            dados.cidade
+                ? dados.destino + " - " + dados.cidade
+                : dados.destino || "-";
+
+        document.getElementById("resumoTipo").textContent =
+            dados.tipo || "-";
+
+        document.getElementById("resumoOrcamento").textContent =
+            dados.orcamento
+                ? "R$ " + Number(dados.orcamento).toLocaleString("pt-BR", {
+                    minimumFractionDigits: 2
+                })
+                : "R$ 0,00";
+    }
+
+
+    // CARREGAR DADOS SALVOS
+    function carregarDados() {
+
+        const dadosSalvos = localStorage.getItem("intercambio");
+
+        if (!dadosSalvos) {
+            return;
+        }
+
+        const dados = JSON.parse(dadosSalvos);
+
+        document.getElementById("destino").value = dados.destino || "";
+        document.getElementById("cidade").value = dados.cidade || "";
+        document.getElementById("dataInicio").value = dados.dataInicio || "";
+        document.getElementById("dataFim").value = dados.dataFim || "";
+        document.getElementById("tipo").value = dados.tipo || "";
+        document.getElementById("orcamento").value = dados.orcamento || "";
+
+        atualizarResumo();
+    }
+
+
+    // TAREFAS
+    let tarefas = JSON.parse(
+        localStorage.getItem("tarefasIntercambio")
+    ) || [];
+
+
+    function adicionarTarefa() {
+
+        const input = document.getElementById("novaTarefa");
+
+        const texto = input.value.trim();
+
+        if (texto === "") {
+            alert("Digite uma tarefa.");
+            return;
+        }
+
+        tarefas.push({
+            texto: texto,
+            concluida: false
+        });
+
+        input.value = "";
+
+        salvarTarefas();
+        mostrarTarefas();
+    }
+
+
+    function mostrarTarefas() {
+
+        const lista = document.getElementById("listaTarefas");
+
+        lista.innerHTML = "";
+
+        tarefas.forEach((tarefa, index) => {
+
+            const div = document.createElement("div");
+
+            div.className = "tarefa";
+
+            div.innerHTML = `
+                <div class="tarefa-info">
+                    <input
+                        type="checkbox"
+                        ${tarefa.concluida ? "checked" : ""}
+                        onchange="concluirTarefa(${index})"
+                    >
+
+                    <span class="${tarefa.concluida ? "tarefa-concluida" : ""}">
+                        ${tarefa.texto}
+                    </span>
+                </div>
+
+                <button
+                    class="btn-excluir"
+                    onclick="excluirTarefa(${index})">
+                    Excluir
+                </button>
+            `;
+
+            lista.appendChild(div);
+        });
+
+        atualizarProgresso();
+    }
+
+
+    function concluirTarefa(index) {
+
+        tarefas[index].concluida =
+            !tarefas[index].concluida;
+
+        salvarTarefas();
+        mostrarTarefas();
+    }
+
+
+    function excluirTarefa(index) {
+
+        tarefas.splice(index, 1);
+
+        salvarTarefas();
+        mostrarTarefas();
+    }
+
+
+    function salvarTarefas() {
+
+        localStorage.setItem(
+            "tarefasIntercambio",
+            JSON.stringify(tarefas)
+        );
+    }
+
+
+    // PROGRESSO
+    function atualizarProgresso() {
+
+        if (tarefas.length === 0) {
+
+            document.getElementById("porcentagem").textContent = "0%";
+
+            document.getElementById("barraProgresso").style.width = "0%";
+
+            return;
+        }
+
+        const concluidas = tarefas.filter(
+            tarefa => tarefa.concluida
+        ).length;
+
+        const porcentagem =
+            Math.round((concluidas / tarefas.length) * 100);
+
+        document.getElementById("porcentagem").textContent =
+            porcentagem + "%";
+
+        document.getElementById("barraProgresso").style.width =
+            porcentagem + "%";
+    }
+
+
+    // DOCUMENTOS
+    function atualizarDocumentos() {
+
+        const checkboxes =
+            document.querySelectorAll("#documentos input");
+
+        checkboxes.forEach((checkbox, index) => {
+
+            localStorage.setItem(
+                "documento_" + index,
+                checkbox.checked
+            );
+
+        });
+    }
+
+
+    function carregarDocumentos() {
+
+        const checkboxes =
+            document.querySelectorAll("#documentos input");
+
+        checkboxes.forEach((checkbox, index) => {
+
+            const salvo =
+                localStorage.getItem("documento_" + index);
+
+            if (salvo === "true") {
+                checkbox.checked = true;
+            }
+
+        });
+    }
+
+
+    // INICIALIZAÇÃO
+    carregarDados();
+    mostrarTarefas();
+    carregarDocumentos();
+
+</script>
+
+</body>
+</html>
