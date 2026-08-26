@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -229,7 +229,6 @@
 
 <body>
 
-    <!-- TOPO -->
     <div class="topbar">
 
         <div class="logo">
@@ -239,437 +238,77 @@
 
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Portal de Intercâmbio</h1>
-        <p>Escolha um destino e comece sua jornada internacional</p>
-    </section>
+   <!-- HERO -->
+<section class="hero">
+    <h1>Portal de Intercâmbio</h1>
+    <p>Escolha um destino e comece sua jornada internacional</p>
+</section>
 
-    <!-- CONTEÚDO -->
-    <main class="container">
+<!-- CONTEÚDO -->
+<main class="container">
 
-        <!-- CARDS PRINCIPAIS -->
-        <div class="grid">
+    <!-- CARDS PRINCIPAIS -->
+    <div class="grid">
 
-            <div class="card" onclick="goTo('paises.html')">
-                <div class="icon">✈️</div>
-                <h3>Países</h3>
-                <p>Descubra destinos de intercâmbio pelo mundo.</p>
-            </div>
+        <a href="paises.html" class="card">
+            <div class="icon">✈️</div>
+            <h3>Países</h3>
+            <p>Descubra destinos de intercâmbio pelo mundo.</p>
+        </a>
 
-            <div class="card" onclick="goTo('bolsas.html')">
-                <div class="icon">🎓</div>
-                <h3>Bolsas de Estudo</h3>
-                <p>Universidades com programas de bolsas internacionais.</p>
-            </div>
+        <a href="bolsas.html" class="card">
+            <div class="icon">🎓</div>
+            <h3>Bolsas de Estudo</h3>
+            <p>Universidades com programas de bolsas internacionais.</p>
+        </a>
 
-            <div class="card" onclick="goTo('chats.html')">
-                <div class="icon">💬</div>
-                <h3>Chat</h3>
-                <p>Converse com intercambistas e tire dúvidas.</p>
-            </div>
+        <a href="chat_intercambistas.html" class="card">
+            <div class="icon">💬</div>
+            <h3>Chat</h3>
+            <p>Converse com intercambistas e tire dúvidas.</p>
+        </a>
 
-            <div class="card" onclick="goTo('blog.html')">
-                <div class="icon">🌎</div>
-                <h3>Experiências</h3>
-                <p>Leia histórias reais de quem já fez intercâmbio.</p>
-            </div>
+        <a href="publicacao_relato.html" class="card">
+            <div class="icon">🌎</div>
+            <h3>Experiências</h3>
+            <p>Leia histórias reais de quem já fez intercâmbio.</p>
+        </a>
 
-            <div class="card" onclick="goTo('escolas_intercambio.html')">
-                <div class="icon">🏫</div>
-                <h3>Escolas de Intercâmbio</h3>
-                <p>
-                    Encontre a melhor escola de intercâmbio
-                    que combine com você.
-                </p>
-            </div>
+        <a href="escolas_intercambio.html" class="card">
+            <div class="icon">🏫</div>
+            <h3>Escolas de Intercâmbio</h3>
+            <p>
+                Encontre a melhor escola de intercâmbio
+                que combine com você.
+            </p>
+        </a>
 
-            <div class="card" onclick="goTo('planejamento.html')">
-                <h3>Planejamento de intercâmbio</h3>
-                <p>
-                   Organize seus planos para ter um intercâmbio inesquecível.
-                </p>
-            </div>
+        <a href="planejamento.html" class="card">
+            <div class="icon">📋</div>
+            <h3>Planejamento de Intercâmbio</h3>
+            <p>
+                Organize seus planos para ter um
+                intercâmbio inesquecível.
+            </p>
+        </a>
 
-        </div>
+    </div>
 
-        <!-- QUIZ -->
-        <section class="quiz-section">
+    <!-- BOTÃO VOLTAR HOME -->
+    <div class="home-section">
+        <a href="index.html" class="home-large-btn">
+             Voltar para a Página Inicial
+        </a>
+    </div>
 
-            <div class="card">
-
-                <div class="icon">🎮</div>
-
-                <h3>Quiz</h3>
-
-                <p>
-                    Descubra qual intercâmbio é ideal para você.
-                </p>
-
-                <meu-quiz></meu-quiz>
-
-            </div>
-
-        </section>
-
-        <!-- BOTÃO VOLTAR HOME -->
-        <div class="home-section">
-
-            <a href="index.html"
-                class="home-large-btn"
-                onclick="goTo('index.html'); return false;">
-                Voltar para a Página Inicial
-            </a>
-
-        </div>
-
-    </main>
+</main>
 
     <footer>
         © 2026 Interway • Conectando você ao mundo
     </footer>
 
 
-    <!-- QUIZ -->
-    <script>
-
-        class MeuQuiz extends HTMLElement {
-
-            constructor() {
-
-                super();
-
-                this.attachShadow({ mode: 'open' });
-
-                this.indice = 0;
-                this.pontuacao = 0;
-
-                this.perguntas = [
-
-                    {
-                        pergunta: "Para qual continete voce gostaria de viajar?",
-                        opcoes: [
-                            "América do Sul",
-                            "América do Norte",
-                            "Europa",
-                            "Ásia"
-                        ],
-                        resposta: 2
-                    },
-                    
-                    {
-                        pergunta: "Qual é o seu nível de inglês?",
-                        opcoes: [
-                            "Iniciante",
-                            "Básico",
-                            "Intermediário",
-                            "Avançado",
-                            "Fluente"
-                        ],
-                        resposta: 1
-                    },
-
-                    {
-                        pergunta: "Qual é o seu nível de inglês?",
-                        opcoes: [
-                            "Java",
-                            "C++",
-                            "Python",
-                            "JavaScript"
-                        ],
-                        resposta: 3
-                    }
-
-                ];
-            }
-
-
-            connectedCallback() {
-
-                this.render();
-
-                this.carregarPergunta();
-
-            }
-
-
-            render() {
-
-                this.shadowRoot.innerHTML = `
-
-                    <style>
-
-                        :host {
-                            display: block;
-                            max-width: 500px;
-                            margin: 25px auto 0;
-                        }
-
-                        .quiz-container {
-                            padding: 20px;
-                            border-radius: 15px;
-                            background: #0f172a;
-                            border: 1px solid rgba(255,255,255,.08);
-                            text-align: center;
-                        }
-
-                        h3 {
-                            margin-bottom: 20px;
-                            color: #fff;
-                            font-size: 18px;
-                        }
-
-                        .btn-opt {
-                            display: block;
-                            width: 100%;
-                            margin: 8px 0;
-                            padding: 12px;
-                            border: 1px solid rgba(255,255,255,.1);
-                            border-radius: 10px;
-                            background: #1e293b;
-                            color: #e5e7eb;
-                            cursor: pointer;
-                            font-size: 14px;
-                            transition: .2s;
-                        }
-
-                        .btn-opt:hover:not(:disabled) {
-                            background: #26364d;
-                            transform: translateY(-2px);
-                        }
-
-                        .btn-opt:disabled {
-                            cursor: default;
-                            opacity: .95;
-                        }
-
-                        .btn-opt.correta {
-                            background: #16a34a !important;
-                            color: white;
-                            border-color: #16a34a;
-                        }
-
-                        .btn-opt.errada {
-                            background: #dc2626 !important;
-                            color: white;
-                            border-color: #dc2626;
-                        }
-
-                        #btn-prox {
-                            margin-top: 15px;
-                            padding: 11px 22px;
-                            background: #2563eb;
-                            color: white;
-                            border: none;
-                            border-radius: 10px;
-                            cursor: pointer;
-                            display: none;
-                            font-weight: 600;
-                        }
-
-                        #btn-prox:hover {
-                            background: #1d4ed8;
-                        }
-
-                        .resultado {
-                            text-align: center;
-                            padding: 15px;
-                        }
-
-                        .resultado h3 {
-                            color: #60a5fa;
-                            margin-bottom: 10px;
-                        }
-
-                        .resultado p {
-                            color: #cbd5e1;
-                        }
-
-                        .escondido {
-                            display: none;
-                        }
-
-                    </style>
-
-                    <div id="quiz-body" class="quiz-container">
-
-                        <h3 id="titulo-pergunta"></h3>
-
-                        <div id="caixa-opcoes"></div>
-
-                        <button id="btn-prox">
-                            Próxima Pergunta
-                        </button>
-
-                    </div>
-
-                    <div id="caixa-resultado"
-                         class="resultado escondido">
-                    </div>
-                `;
-
-                this.shadowRoot
-                    .getElementById('btn-prox')
-                    .onclick = () => this.proxima();
-
-            }
-
-
-            carregarPergunta() {
-
-                const q = this.perguntas[this.indice];
-
-                const titulo =
-                    this.shadowRoot
-                        .getElementById('titulo-pergunta');
-
-                titulo.innerText = q.pergunta;
-
-                const btnProx =
-                    this.shadowRoot
-                        .getElementById('btn-prox');
-
-                btnProx.style.display = 'none';
-
-                const divOpcoes =
-                    this.shadowRoot
-                        .getElementById('caixa-opcoes');
-
-                divOpcoes.innerHTML = '';
-
-
-                q.opcoes.forEach((opcao, i) => {
-
-                    const btn =
-                        document.createElement('button');
-
-                    btn.innerText = opcao;
-
-                    btn.className = 'btn-opt';
-
-                    btn.onclick = () =>
-                        this.verificar(btn, i);
-
-                    divOpcoes.appendChild(btn);
-
-                });
-
-            }
-
-
-            verificar(btnClicado, indiceSel) {
-
-                const q = this.perguntas[this.indice];
-
-                const todosBotoes =
-                    this.shadowRoot
-                        .querySelectorAll('.btn-opt');
-
-
-                todosBotoes.forEach(
-                    b => b.disabled = true
-                );
-
-
-                if (indiceSel === q.resposta) {
-
-                    btnClicado.classList.add('correta');
-
-                    this.pontuacao++;
-
-                } else {
-
-                    btnClicado.classList.add('errada');
-
-                    todosBotoes[q.resposta]
-                        .classList.add('correta');
-
-                }
-
-
-                this.shadowRoot
-                    .getElementById('btn-prox')
-                    .style.display = 'inline-block';
-
-            }
-
-
-            proxima() {
-
-                this.indice++;
-
-
-                if (this.indice < this.perguntas.length) {
-
-                    this.carregarPergunta();
-
-                } else {
-
-                    this.shadowRoot
-                        .getElementById('quiz-body')
-                        .classList.add('escondido');
-
-
-                    const res =
-                        this.shadowRoot
-                            .getElementById('caixa-resultado');
-
-                    res.classList.remove('escondido');
-
-
-                    res.innerHTML = `
-
-                        <h3>🎉 Fim do Quiz!</h3>
-
-                        <p>
-                            Você acertou
-                            <strong>
-                                ${this.pontuacao}
-                            </strong>
-                            de
-                            <strong>
-                                ${this.perguntas.length}
-                            </strong>
-                            perguntas.
-                        </p>
-
-                    `;
-
-                }
-
-            }
-
-        }
-
-
-        customElements.define('meu-quiz', MeuQuiz);
-
-    </script>
-
-
-    <!-- NAVEGAÇÃO -->
-    <script>
-
-        function goTo(page) {
-
-            document.body.classList.add("fade-out");
-
-            setTimeout(() => {
-
-                window.location.href = page;
-
-            }, 400);
-
-        }
-
-
-        window.addEventListener("pageshow", () => {
-
-            document.body.classList.remove("fade-out");
-
-        });
-
-    </script>
+    
 
 </body>
 
