@@ -1,0 +1,989 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Escolas de Intercâmbio | Interway</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        :root {
+            --azul-escuro: #0b1f4d;
+            --azul: #1d4ed8;
+            --azul-claro: #3b82f6;
+            --azul-suave: #dbeafe;
+            --fundo: #f4f8ff;
+            --branco: #ffffff;
+            --texto: #1e293b;
+            --cinza: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--fundo);
+            color: var(--texto);
+        }
+
+        /* HEADER */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                var(--azul-escuro),
+                var(--azul)
+            );
+
+            color: white;
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 4px 15px rgba(11, 31, 77, 0.25);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #bfdbfe;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 65px 20px 55px;
+
+            background:
+                linear-gradient(
+                    rgba(11, 31, 77, 0.94),
+                    rgba(29, 78, 216, 0.90)
+                );
+            
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #dbeafe;
+            font-size: 15px;
+        }
+
+        /* FILTROS */
+
+        .filtros {
+            max-width: 1100px;
+            margin: -30px auto 45px;
+
+            background: white;
+            padding: 25px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 8px 30px rgba(15, 23, 42, 0.12);
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .filtros input,
+        .filtros select {
+            width: 100%;
+            padding: 13px 15px;
+
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+
+            background: white;
+            color: var(--texto);
+
+            outline: none;
+        }
+
+        .filtros input:focus,
+        .filtros select:focus {
+            border-color: var(--azul-claro);
+
+            box-shadow:
+                0 0 0 3px rgba(59, 130, 246, 0.12);
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px 60px;
+        }
+
+        .titulo-secao {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .titulo-secao h2 {
+            color: var(--azul-escuro);
+        }
+
+        .contador {
+            color: var(--cinza);
+            font-size: 14px;
+        }
+
+        /* GRID */
+
+        .escolas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* CARD */
+
+        .escola {
+            background: var(--branco);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            border: 1px solid #e2e8f0;
+
+            box-shadow:
+                0 5px 20px rgba(15, 23, 42, 0.07);
+
+            transition: 0.3s;
+        }
+
+        .escola:hover {
+            transform: translateY(-7px);
+
+            border-color: #93c5fd;
+
+            box-shadow:
+                0 15px 35px rgba(30, 64, 175, 0.15);
+        }
+
+        /* IMAGEM */
+
+        .escola-imagem {
+            height: 180px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1e40af,
+                    #3b82f6
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 65px;
+        }
+
+        /* CONTEÚDO */
+
+        .escola-conteudo {
+            padding: 22px;
+        }
+
+        .escola-conteudo h3 {
+            color: var(--azul-escuro);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .localizacao {
+            color: var(--azul);
+            font-size: 13px;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .descricao {
+            color: var(--cinza);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        /* TAGS */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: var(--azul-suave);
+            color: #1e40af;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* AVALIAÇÃO */
+
+        .avaliacao {
+            color: #f59e0b;
+            margin-bottom: 17px;
+            font-size: 14px;
+        }
+
+        /* BOTÃO */
+
+        .btn {
+            display: block;
+            width: 100%;
+
+            padding: 11px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: var(--azul);
+            color: white;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--azul-escuro);
+        }
+
+        /* SEM RESULTADOS */
+
+        #semResultados {
+            display: none;
+
+            text-align: center;
+
+            background: white;
+
+            padding: 50px;
+
+            border-radius: 15px;
+
+            color: var(--cinza);
+        }
+
+        #semResultados h3 {
+            color: var(--azul-escuro);
+            margin-bottom: 8px;
+        }
+
+        /* HOME */
+
+        .home {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        .home a {
+            display: inline-block;
+
+            padding: 13px 28px;
+
+            background: var(--azul-escuro);
+
+            color: white;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .home a:hover {
+            background: var(--azul);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--azul-escuro);
+
+            color: #bfdbfe;
+
+            text-align: center;
+
+            padding: 30px;
+
+            font-size: 13px;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 900px) {
+
+            .escolas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filtros {
+                grid-template-columns: 1fr;
+                margin: 20px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .escolas {
+                grid-template-columns: 1fr;
+            }
+
+            .titulo-secao {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+
+            <img src="img/logotipo.png" alt="Logo Interway">
+
+            <span>INTERWAY</span>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">Início</a>
+
+            <a href="paises.html">Países</a>
+
+            <a href="planejamento.html">Planejamento</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>🏫 Escolas de Intercâmbio</h1>
+
+        <p>
+            Encontre escolas e instituições de ensino no exterior
+            e escolha a opção ideal para sua jornada internacional.
+        </p>
+
+    </section>
+
+
+    <!-- FILTROS -->
+
+    <section class="filtros">
+
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="🔎 Pesquise por escola ou cidade..."
+        >
+
+        <select id="pais">
+
+            <option value="">Todos os países</option>
+
+            <option value="Canadá">Canadá</option>
+
+            <option value="Estados Unidos">
+                Estados Unidos
+            </option>
+
+            <option value="Inglaterra">
+                Inglaterra
+            </option>
+
+            <option value="Irlanda">
+                Irlanda
+            </option>
+
+            <option value="Austrália">
+                Austrália
+            </option>
+
+        </select>
+
+
+        <select id="curso">
+
+            <option value="">Todos os cursos</option>
+
+            <option value="Inglês">Inglês</option>
+
+            <option value="Francês">Francês</option>
+
+            <option value="Universidade">
+                Universidade
+            </option>
+
+            <option value="Profissionalizante">
+                Profissionalizante
+            </option>
+
+        </select>
+
+    </section>
+
+
+    <!-- ESCOLAS -->
+
+    <main class="container">
+
+        <div class="titulo-secao">
+
+            <h2>Escolas disponíveis</h2>
+
+            <span class="contador" id="contador">
+                6 escolas encontradas
+            </span>
+
+        </div>
+
+
+        <div class="escolas" id="listaEscolas">
+
+
+            <article
+                class="escola"
+                data-pais="Canadá"
+                data-curso="Inglês"
+            >
+
+                <div class="escola-imagem">
+                    🇨🇦
+                </div>
+
+                <div class="escola-conteudo">
+
+                    <h3>Toronto Language School</h3>
+
+                    <div class="localizacao">
+                        📍 Toronto, Canadá
+                    </div>
+
+                    <p class="descricao">
+                        Escola especializada em cursos de inglês
+                        para estudantes internacionais.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Inglês</span>
+                        <span class="tag">Intercâmbio</span>
+                        <span class="tag">Jovens</span>
+
+                    </div>
+
+                    <div class="avaliacao">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="verEscola('Toronto Language School')"
+                    >
+                        Ver escola
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="escola"
+                data-pais="Estados Unidos"
+                data-curso="Inglês"
+            >
+
+                <div class="escola-imagem">
+                    🇺🇸
+                </div>
+
+                <div class="escola-conteudo">
+
+                    <h3>New York English Center</h3>
+
+                    <div class="localizacao">
+                        📍 Nova York, EUA
+                    </div>
+
+                    <p class="descricao">
+                        Curso de inglês para estudantes
+                        internacionais.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Inglês</span>
+                        <span class="tag">Cultura</span>
+
+                    </div>
+
+                    <div class="avaliacao">
+                        ⭐⭐⭐⭐☆
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="verEscola('New York English Center')"
+                    >
+                        Ver escola
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="escola"
+                data-pais="Inglaterra"
+                data-curso="Inglês"
+            >
+
+                <div class="escola-imagem">
+                    🇬🇧
+                </div>
+
+                <div class="escola-conteudo">
+
+                    <h3>London International School</h3>
+
+                    <div class="localizacao">
+                        📍 Londres, Inglaterra
+                    </div>
+
+                    <p class="descricao">
+                        Cursos de inglês para estudantes
+                        de diferentes países.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Inglês</span>
+                        <span class="tag">Internacional</span>
+
+                    </div>
+
+                    <div class="avaliacao">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="verEscola('London International School')"
+                    >
+                        Ver escola
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="escola"
+                data-pais="Irlanda"
+                data-curso="Inglês"
+            >
+
+                <div class="escola-imagem">
+                    🇮🇪
+                </div>
+
+                <div class="escola-conteudo">
+
+                    <h3>Dublin Study Center</h3>
+
+                    <div class="localizacao">
+                        📍 Dublin, Irlanda
+                    </div>
+
+                    <p class="descricao">
+                        Cursos de inglês e programas
+                        para estudantes internacionais.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Inglês</span>
+                        <span class="tag">Estudantes</span>
+
+                    </div>
+
+                    <div class="avaliacao">
+                        ⭐⭐⭐⭐☆
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="verEscola('Dublin Study Center')"
+                    >
+                        Ver escola
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="escola"
+                data-pais="Austrália"
+                data-curso="Inglês"
+            >
+
+                <div class="escola-imagem">
+                    🇦🇺
+                </div>
+
+                <div class="escola-conteudo">
+
+                    <h3>Sydney International College</h3>
+
+                    <div class="localizacao">
+                        📍 Sydney, Austrália
+                    </div>
+
+                    <p class="descricao">
+                        Instituição para estudantes que desejam
+                        estudar e conhecer a Austrália.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Inglês</span>
+                        <span class="tag">Internacional</span>
+
+                    </div>
+
+                    <div class="avaliacao">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="verEscola('Sydney International College')"
+                    >
+                        Ver escola
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="escola"
+                data-pais="Canadá"
+                data-curso="Francês"
+            >
+
+                <div class="escola-imagem">
+                    🇨🇦
+                </div>
+
+                <div class="escola-conteudo">
+
+                    <h3>Montreal Language Institute</h3>
+
+                    <div class="localizacao">
+                        📍 Montreal, Canadá
+                    </div>
+
+                    <p class="descricao">
+                        Cursos de francês e inglês para
+                        estudantes estrangeiros.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">Francês</span>
+                        <span class="tag">Inglês</span>
+
+                    </div>
+
+                    <div class="avaliacao">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="verEscola('Montreal Language Institute')"
+                    >
+                        Ver escola
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- SEM RESULTADOS -->
+
+        <div id="semResultados">
+
+            <h3>😕 Nenhuma escola encontrada</h3>
+
+            <p>
+                Tente alterar os filtros ou pesquisar outro destino.
+            </p>
+
+        </div>
+
+
+        <!-- VOLTAR -->
+
+        <div class="home">
+
+            <a href="index.html">
+                ← Voltar para a página inicial
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Interway • Conectando você ao mundo 🌎
+
+    </footer>
+
+
+    <script>
+
+        const pesquisa =
+            document.getElementById("pesquisa");
+
+        const pais =
+            document.getElementById("pais");
+
+        const curso =
+            document.getElementById("curso");
+
+        const escolas =
+            document.querySelectorAll(".escola");
+
+        const contador =
+            document.getElementById("contador");
+
+        const semResultados =
+            document.getElementById("semResultados");
+
+
+        function filtrarEscolas() {
+
+            const texto =
+                pesquisa.value.toLowerCase();
+
+            const paisSelecionado =
+                pais.value;
+
+            const cursoSelecionado =
+                curso.value;
+
+            let quantidade = 0;
+
+
+            escolas.forEach(escola => {
+
+                const nome =
+                    escola.querySelector("h3")
+                    .textContent
+                    .toLowerCase();
+
+                const local =
+                    escola.querySelector(".localizacao")
+                    .textContent
+                    .toLowerCase();
+
+                const escolaPais =
+                    escola.dataset.pais;
+
+                const escolaCurso =
+                    escola.dataset.curso;
+
+
+                const pesquisaOk =
+                    nome.includes(texto) ||
+                    local.includes(texto);
+
+                const paisOk =
+                    paisSelecionado === "" ||
+                    escolaPais === paisSelecionado;
+
+                const cursoOk =
+                    cursoSelecionado === "" ||
+                    escolaCurso === cursoSelecionado;
+
+
+                if (
+                    pesquisaOk &&
+                    paisOk &&
+                    cursoOk
+                ) {
+
+                    escola.style.display = "block";
+
+                    quantidade++;
+
+                } else {
+
+                    escola.style.display = "none";
+
+                }
+
+            });
+
+
+            contador.textContent =
+                quantidade +
+                (
+                    quantidade === 1
+                        ? " escola encontrada"
+                        : " escolas encontradas"
+                );
+
+
+            semResultados.style.display =
+                quantidade === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+
+        pesquisa.addEventListener(
+            "input",
+            filtrarEscolas
+        );
+
+        pais.addEventListener(
+            "change",
+            filtrarEscolas
+        );
+
+        curso.addEventListener(
+            "change",
+            filtrarEscolas
+        );
+
+
+        function verEscola(nome) {
+
+            alert(
+                "Você selecionou: " +
+                nome +
+                "\n\nEm breve você poderá visualizar mais informações sobre esta escola."
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
