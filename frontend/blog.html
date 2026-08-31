@@ -319,44 +319,67 @@ function closeModal(){
 }
 
 /* NOVO POST */
-function addPost(){
+async function likePost(postagem_id, btn) {
+    const resposta = await fetch(
+        "backend/postagens/listar.php"
+    );
 
-    const titulo = document.getElementById("titulo").value;
-    const pais = document.getElementById("pais").value;
-    const texto = document.getElementById("texto").value;
-    const img = document.getElementById("img").value;
+    const resultado = await resposta.json();
+     if (!resultado.sucesso) {
+        alert("Erro ao carregar comunidade.");
+        return;
+    }
 
-    const post = document.createElement("div");
-    post.className = "post";
+    const feed = document.getElementById("feed");
 
-    post.innerHTML = `
-        <img src="${img}">
-        <div class="content">
-        <span class="tag">🌎 ${pais}</span>
-        <h2>${titulo}</h2>
-        <p>${texto}</p>
+    feed.innerHTML = "";
 
-        <div class="actions">
-        <button class="btn like" onclick="likePost(this)">
-        ❤️ Curtir (<span class="counter">0</span>)
-        </button>
-        <button class="btn" onclick="toggleReactions(this)">😄 Reagir</button>
-        </div>
 
-        <div class="reaction-box">
-        <span class="reaction" onclick="react(this)">😍</span>
-        <span class="reaction" onclick="react(this)">🔥</span>
-        <span class="reaction" onclick="react(this)">👏</span>
-        </div>
+    resultado.postagens.forEach(post => {
 
-        </div>
-    `;
+        const elemento = document.createElement("div");
 
-    document.getElementById("feed").prepend(post);
+        elemento.className = "post";
 
-    closeModal();
+        elemento.innerHTML = `
+            <img src="${post.imagem || 'img/default.jpg'}">
+
+            <div class="content">
+
+                <span class="tag">
+                    🌎 ${post.pais}
+                </span>
+
+                <h2>${post.titulo}</h2>
+
+                <p>${post.texto}</p>
+
+                <small>
+                    Publicado por ${post.nome}
+                </small>
+
+                <div class="actions">
+
+                    <button
+                        class="btn like"
+                        onclick="likePost(${post.id}, this)"
+                    >
+                        ❤️ Curtir
+                        (<span class="counter">
+                            ${post.curtidas}
+                        </span>)
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        feed.appendChild(elemento);
+    });
 }
 
+carregarPostagens();
 </script>
 
 </body>

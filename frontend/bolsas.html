@@ -308,18 +308,245 @@ p{
 </div>
 
 <script>
-const input = document.getElementById('search');
-const cards = document.querySelectorAll('.card');
 
-input.addEventListener('input', () => {
-    const value = input.value.toLowerCase();
+const API = "backend/bolsas/listar.php";
+
+const input = document.getElementById("search");
+
+const grid = document.getElementById("grid");
+
+
+/* ==========================================
+   CARREGAR BOLSAS
+========================================== */
+
+async function carregarBolsas(){
+
+    try{
+
+        const resposta = await fetch(API);
+
+        if(!resposta.ok){
+
+            throw new Error(
+                "Erro HTTP: " + resposta.status
+            );
+
+        }
+
+        const dados = await resposta.json();
+
+
+        if(!dados.sucesso){
+
+            grid.innerHTML = `
+                <p>
+                    ${dados.mensagem}
+                </p>
+            `;
+
+            return;
+        }
+
+
+        grid.innerHTML = "";
+
+
+        if(dados.bolsas.length === 0){
+
+            grid.innerHTML = `
+                <p>
+                    Nenhuma bolsa encontrada.
+                </p>
+            `;
+
+            return;
+        }
+
+
+        dados.bolsas.forEach(bolsa => {
+
+            criarCard(bolsa);
+
+        });
+
+
+    }catch(erro){
+
+        console.error(erro);
+
+        grid.innerHTML = `
+            <p>
+                Erro ao conectar com o servidor.
+                <br>
+                Verifique se o Apache e o MySQL estão funcionando.
+            </p>
+        `;
+
+    }
+
+}
+
+
+/* ==========================================
+   CRIAR CARD
+========================================== */
+
+function criarCard(bolsa){
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+
+    card.dataset.name = `
+        ${bolsa.universidade}
+        ${bolsa.pais}
+        ${bolsa.nome_bolsa}
+        ${bolsa.nivel}
+        ${bolsa.area}
+    `.toLowerCase();
+
+
+    card.innerHTML = `
+
+        <img
+            src="${escapeHTML(bolsa.imagem)}"
+            alt="${escapeHTML(bolsa.universidade)}"
+            onerror="this.style.display='none'"
+        >
+
+        <div class="content">
+
+            <span class="tag">
+                🌎 ${escapeHTML(bolsa.pais)}
+            </span>
+
+            <h3>
+                ${escapeHTML(bolsa.universidade)}
+            </h3>
+
+            <p>
+                ${escapeHTML(bolsa.descricao)}
+            </p>
+
+            ${
+                bolsa.nome_bolsa
+                ?
+                `
+                <p>
+                    🎓 <strong>Bolsa:</strong>
+                    ${escapeHTML(bolsa.nome_bolsa)}
+                </p>
+                `
+                :
+                ""
+            }
+
+            ${
+                bolsa.nivel
+                ?
+                `
+                <p>
+                    📚 <strong>Nível:</strong>
+                    ${escapeHTML(bolsa.nivel)}
+                </p>
+                `
+                :
+                ""
+            }
+
+            ${
+                bolsa.area
+                ?
+                `
+                <p>
+                    📖 <strong>Área:</strong>
+                    ${escapeHTML(bolsa.area)}
+                </p>
+                `
+                :
+                ""
+            }
+
+            <a
+                class="btn"
+                href="${escapeHTML(bolsa.site_oficial)}"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Acessar Site Oficial
+
+            </a>
+
+        </div>
+
+    `;
+
+
+    grid.appendChild(card);
+
+}
+
+
+/* ==========================================
+   PROTEÇÃO CONTRA HTML
+========================================== */
+
+function escapeHTML(valor){
+
+    const div = document.createElement("div");
+
+    div.textContent = valor ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+/* ==========================================
+   PESQUISA
+========================================== */
+
+input.addEventListener("input", () => {
+
+    const valor =
+        input.value
+        .toLowerCase()
+        .trim();
+
+
+    const cards =
+        document.querySelectorAll(".card");
+
 
     cards.forEach(card => {
-        const match = card.dataset.name.toLowerCase().includes(value);
-        card.style.display = match ? "block" : "none";
+
+        const nome =
+            card.dataset.name;
+
+
+        const encontrado =
+            nome.includes(valor);
+
+
+        card.style.display =
+            encontrado
+            ? "block"
+            : "none";
+
     });
+
 });
+
+
+/* ==========================================
+   INICIAR
+========================================== */
+
+carregarBolsas();
+
 </script>
+
 
 </body>
 </html>
