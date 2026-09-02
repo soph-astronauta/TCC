@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "interway";
+$dbname = "banco_interway";
 $username = "root";
 $password = "";
 

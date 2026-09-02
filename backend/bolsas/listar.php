@@ -8,18 +8,15 @@ try {
 
     $sql = "
         SELECT
-            id,
-            universidade,
-            pais,
+            id_bolsa,
+            nome,
             descricao,
-            imagem,
-            site_oficial,
-            nome_bolsa,
-            nivel,
-            area,
-            data_criacao
-        FROM bolsas
-        ORDER BY data_criacao DESC
+            percentual_desconto,
+            data_inicio,
+            data_fim,
+            id_curso,
+        FROM bolsas_estudo
+        ORDER BY data_inicio DESC
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -30,7 +27,7 @@ try {
 
     echo json_encode([
         "sucesso" => true,
-        "bolsas" => $bolsas
+        "bolsas_estudo" => $bolsas_estudo
     ]);
 
 } catch(PDOException $e) {
