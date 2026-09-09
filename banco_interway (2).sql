@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Set-2026 às 16:50
+-- Tempo de geração: 02-Set-2026 às 17:26
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -50,6 +50,17 @@ CREATE TABLE `bolsa_estudo` (
   `id_curso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `bolsa_estudo`
+--
+
+INSERT INTO `bolsa_estudo` (`id_bolsa`, `nome`, `descricao`, `percentual_desconto`, `data_inicio`, `data_fim`, `id_curso`) VALUES
+(1, 'Bolsa InterWay Canadá', 'Bolsa destinada a estudantes interessados em estudar no Canadá.', '999.99', '2026-01-01', '2026-06-30', NULL),
+(2, 'Bolsa Europa Acadêmica', 'Auxílio financeiro para estudantes que desejam realizar intercâmbio na Europa.', '999.99', '2026-02-01', '2026-07-31', NULL),
+(3, 'Bolsa Global de Tecnologia', 'Bolsa para estudantes da área de tecnologia e computação.', '999.99', '2026-03-01', '2026-08-31', NULL),
+(4, 'Bolsa Novos Horizontes', 'Programa de apoio para estudantes que realizarão intercâmbio internacional.', '999.99', '2026-04-01', '2026-09-30', NULL),
+(5, 'Bolsa Excelência Acadêmica', 'Bolsa destinada a estudantes com excelente desempenho acadêmico.', '999.99', '2026-05-01', '2026-10-31', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +71,17 @@ CREATE TABLE `chat` (
   `id_chat` int(11) NOT NULL,
   `assunto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `chat`
+--
+
+INSERT INTO `chat` (`id_chat`, `assunto`) VALUES
+(1, 'Dúvidas sobre intercâmbio'),
+(2, 'Bolsas de estudo'),
+(3, 'Documentação necessária'),
+(4, 'Escolha de país'),
+(5, 'Informações sobre cursos');
 
 -- --------------------------------------------------------
 
@@ -84,6 +106,17 @@ CREATE TABLE `curso` (
   `titulo` varchar(255) DEFAULT NULL,
   `instituicao` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `curso`
+--
+
+INSERT INTO `curso` (`id_curso`, `titulo`, `instituicao`) VALUES
+(1, 'Engenharia de Software', 'Universidade de Toronto'),
+(2, 'Administração', 'Universidade de Lisboa'),
+(3, 'Ciência da Computação', 'Universidade de Melbourne'),
+(4, 'Relações Internacionais', 'Universidade de Barcelona'),
+(5, 'Arquitetura', 'Universidade de Roma');
 
 -- --------------------------------------------------------
 
@@ -134,6 +167,17 @@ CREATE TABLE `inscrição` (
   `id_tipo` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `inscrição`
+--
+
+INSERT INTO `inscrição` (`id_inscricao`, `data_inscricao`, `id_tipo`, `nome`) VALUES
+(1, '2026-01-15', 1, 'Intercâmbio acadêmico'),
+(2, '2026-02-10', 2, 'Graduação no exterior'),
+(3, '2026-03-05', 1, 'Intercâmbio acadêmico'),
+(4, '2026-04-20', 3, 'Curso de idiomas'),
+(5, '2026-05-12', 2, 'Graduação no exterior');
 
 -- --------------------------------------------------------
 
