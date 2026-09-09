@@ -535,7 +535,7 @@ h3{
     <div class="nav-buttons">
 
         <a
-            href="javascript:history.back()"
+            href="index.html"
             class="nav-btn back"
         >
             Voltar
@@ -785,7 +785,7 @@ h3{
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Acessar Harvard
+                    Acessar 
                 </a>
 
 

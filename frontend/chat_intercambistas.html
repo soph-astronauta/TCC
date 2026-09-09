@@ -197,67 +197,96 @@ button{
 </div>
 
 <script>
-
 const chat = document.getElementById("chat");
 const input = document.getElementById("input");
 
-const users = [
-    "Lucas CANADÁ ",
-    "Amanda LONDRES",
-    "Sophia EUA",
-    "Rafael IRLANDA",
-    "Julia CHINA"
-];
+// Definimos que o usuário logado nesta sessão é o ID 3 ("Você")
+const MEU_ID_USUARIO = 3; 
+let ultimoIdRecebido = 0;
 
-// enviar mensagem
-function send(){
+// Carregar mensagens do banco de dados
+async function buscarMensagens() {
+    try {
+        const resposta = await fetch(`buscar_mensagens.php?ultimo_id=${ultimoIdRecebido}`);
+        if (!resposta.ok) return;
 
-    const text = input.value.trim();
-    if(text === "") return;
+        const mensagens = await resposta.json();
 
-    // mensagem do usuário
-    addMsg("Você", text, "user");
+        if (mensagens.length > 0) {
+            mensagens.forEach(msg => {
+                const tipo = (msg.id_usuario === MEU_ID_USUARIO) ? "user" : "other";
+                const rotulo = (tipo === "user") 
+                    ? `Você • ${msg.hora}` 
+                    : `${msg.nome.toUpperCase()} (${msg.pais.toUpperCase()}) • ${msg.hora}`;
+
+                addMsgNaTela(rotulo, msg.texto, tipo);
+                ultimoIdRecebido = msg.id;
+            });
+        }
+    } catch (erro) {
+        console.error("Erro ao sincronizar mensagens:", erro);
+    }
+}
+
+// Enviar mensagem para o banco
+async function send() {
+    const texto = input.value.trim();
+    if (texto === "") return;
 
     input.value = "";
 
-    // resposta simulada de outro intercambista
-    setTimeout(() => {
-        const user = users[Math.floor(Math.random()*users.length)];
-        const responses = [
-            "Que legal isso! 😍",
-            "Estou pensando em ir também!",
-            "Quanto você gastou aproximadamente?",
-            "Essa experiência muda a vida mesmo",
-            "Quero muito fazer isso um dia!"
-        ];
+    try {
+        const resposta = await fetch("enviar_mensagem.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                id_usuario: MEU_ID_USUARIO,
+                mensagem: texto
+            })
+        });
 
-        const msg = responses[Math.floor(Math.random()*responses.length)];
-        addMsg(user, msg, "other");
-
-    }, 800);
+        const dados = await resposta.json();
+        if (dados.sucesso) {
+            // Busca imediatamente as novas mensagens para atualizar a tela
+            buscarMensagens();
+        } else {
+            alert("Erro ao enviar mensagem: " + (dados.erro || "desconhecido"));
+        }
+    } catch (erro) {
+        console.error("Erro ao enviar:", erro);
+    }
 }
 
-// adicionar mensagem
-function addMsg(name, text, type){
-
+// Renderizar balão na tela
+function addMsgNaTela(rotulo, texto, tipo) {
     const div = document.createElement("div");
-    div.classList.add("msg", type);
+    div.classList.add("msg", tipo);
 
-    if(type === "other"){
-        div.innerHTML = `<div class="name">${name}</div>${text}`;
-    } else {
-        div.innerHTML = text;
-    }
+    // Escapando HTML para evitar ataques XSS
+    const textoSeguro = document.createTextNode(texto);
+
+    const divNome = document.createElement("div");
+    divNome.classList.add("name");
+    divNome.innerText = rotulo;
+
+    div.appendChild(divNome);
+    div.appendChild(textoSeguro);
 
     chat.appendChild(div);
     chat.scrollTop = chat.scrollHeight;
 }
 
-// enter
-input.addEventListener("keypress", (e)=>{
-    if(e.key === "Enter") send();
+// Pressionar tecla Enter para enviar
+input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") send();
 });
 
+// Limpa mensagens estáticas iniciais e começa a sincronização
+chat.innerHTML = "";
+buscarMensagens();
+
+// Polling: sincroniza mensagens a cada 2 segundos
+setInterval(buscarMensagens, 2000);
 </script>
 
 </body>
