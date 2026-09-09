@@ -565,7 +565,7 @@ footer{
             <div class="card">
                 <img src="../img/tamires.jpeg" alt=" Intercambistas"> 
                 <h3>Tamires Anastacio</h3>
-                <p>Designer UI/UX</p>
+                <p>Designer UI/UX e Backend</p>
             </div>
 
         </div>
@@ -578,13 +578,32 @@ footer{
 <section id="contato" class="contato">
     <h2 class="section-title">Entre em Contato</h2>
 
-    <form>
-        <input type="text" placeholder="Seu nome">
-        <input type="email" placeholder="Seu e-mail">
-        <textarea rows="5" placeholder="Sua mensagem"></textarea>
+    <form action="..backend/processar_contato.php" method="POST">
+        <input
+            type="text"
+            name="nome"
+            placeholder="Seu nome"
+            required
+        >
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Seu e-mail"
+            required
+        >
+
+        <textarea
+            name="mensagem"
+            rows="5"
+            placeholder="Sua mensagem"
+            required
+        ></textarea>
+
         <button type="submit">Enviar</button>
     </form>
 </section>
+
 
 
 
