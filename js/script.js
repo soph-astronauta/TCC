@@ -124,3 +124,34 @@ function exibirResultado() {
 
 // Inicializa o quiz ao carregar a página
 carregarPergunta();
+
+//api
+fetch("api/usuarios.php")
+    .then(resposta => resposta.json())
+    .then(usuarios => {
+        console.log(usuarios);
+    })
+    .catch(erro => {
+        console.error(erro);
+    });
+
+    //post
+    fetch("api/cadastrar_usuario.php", {
+      method: "POST",
+  
+      headers: {
+          "Content-Type": "application/json"
+      },
+  
+      body: JSON.stringify({
+          nome: "Sophia",
+          email: "sophia@email.com"
+      })
+  })
+  .then(resposta => resposta.json())
+  .then(dados => {
+      console.log(dados);
+  })
+  .catch(erro => {
+      console.error(erro);
+  });
