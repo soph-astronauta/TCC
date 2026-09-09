@@ -781,12 +781,13 @@ h3{
 
                 <a
                     class="btn"
-                    href="<?= $site ?>"
+                    href="https://www.harvard.edu/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Acessar Site Oficial
+                    Acessar Harvard
                 </a>
+
 
             </div>
 
