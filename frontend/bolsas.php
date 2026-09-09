@@ -525,7 +525,7 @@ h3{
 
     <div class="logo">
 
-        <img src="..img/logotipo.png" alt="Logo Interway"/>
+        <img src="../img/logotipo.png" alt="Logo Interway">
 
         <span>INTERWAY</span>
 
