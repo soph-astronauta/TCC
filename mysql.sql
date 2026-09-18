@@ -29,6 +29,8 @@ USE `mysql`;
 -- Estrutura da tabela `avaliacao`
 --
 
+DROP TABLE IF EXISTS `avaliacao`;
+
 CREATE TABLE `avaliacao` (
   `id_avaliacao` int(11) NOT NULL,
   `num_estrelas` varchar(5) DEFAULT NULL
